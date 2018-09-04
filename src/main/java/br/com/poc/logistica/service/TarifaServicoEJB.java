@@ -15,7 +15,7 @@ public class TarifaServicoEJB implements TarifaServico {
 	private EntityManager em;
 	
 	public List<Tarifa> listarTarifas() {
-		return em.createQuery("Select t from Tarifa f", Tarifa.class).getResultList();
+		return em.createQuery("Select t from Tarifa t", Tarifa.class).getResultList();
 	}
 	
 }

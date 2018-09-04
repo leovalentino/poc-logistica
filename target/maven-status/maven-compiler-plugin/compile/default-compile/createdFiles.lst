@@ -1,6 +1,0 @@
-br\com\poc\logistica\service\TarifaServicoEJB.class
-br\com\poc\logistica\application\PocApplication.class
-br\com\poc\logistica\model\Tarifa.class
-br\com\poc\logistica\controller\TarifaController.class
-br\com\poc\logistica\service\TarifaServico.class
-br\com\poc\logistica\dao\TarifaDao.class

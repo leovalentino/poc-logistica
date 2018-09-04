@@ -9,4 +9,9 @@
 		<welcome-file>home.jsp</welcome-file>
 		<welcome-file>home.html</welcome-file>
 	</welcome-file-list>
+	
+ 	<servlet-mapping>
+        <servlet-name>br.com.poc.logistica.application.PocApplication</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
 </web-app>

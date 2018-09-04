@@ -3,24 +3,22 @@ package br.com.poc.logistica.application;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import br.com.poc.logistica.controller.TarifaController;
 
-@ApplicationPath("/poc")
 public class PocApplication extends Application {
 
 	private Set<Object> singletons = new HashSet<Object>();
-	private Set<Class<?>> empty = new HashSet<Class<?>>();
+	private Set<Class<?>> classes = new HashSet<Class<?>>();
 
 	public PocApplication() {
-	      singletons.add(new TarifaController());
+		classes.add(TarifaController.class);
 	   }
 
 	@Override
 	public Set<Class<?>> getClasses() {
-		return empty;
+		return classes;
 	}
 
 	@Override
