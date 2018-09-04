@@ -18,7 +18,7 @@ public class TarifaController {
 	private TarifaServico servico;
 	
 	@GET
-	@Path("/get")
+	@Path("/listartarifas")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Tarifa> listarTarifas() {
 		return servico.listarTarifas();
