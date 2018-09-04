@@ -13,17 +13,19 @@
 </head>
 <body>
 	
-	<div class="navbar">
-	  <a href="#home">Home</a>
-	  <div class="dropdown">
-	    <button class="dropbtn" onclick="myFunction()">Dropdown
-	      <i class="fa fa-caret-down"></i>
-	    </button>
-	    <div class="dropdown-content" id="myDropdown">
-	      <a href="gerenciamentoDevolucoes/GerenciarDevolucao.template.html">Gerenciar Devoluções</a>
-	      <a href="gerenciamentoEntregas/GerenciarEntregas.template.html">Gerenciar Entregas</a>
-	      <a href="gerenciamentoFretes/GerenciarFrete.template.html">Gerenciar Fretes</a>
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Gerenciar</a>
+    <div class="dropdown-content">
+      <a href="gerenciamentoDevolucoes/GerenciarDevolucao.template.html">Gerenciar Devoluções</a>
+      <a href="gerenciamentoEntregas/GerenciarEntregas.template.htm">Gerenciar Entregas</a>
+      <a href="gerenciamentoFretes/GerenciarFrete.template.html">Gerenciar Fretes</a>
     </div>
-  </div> 
-</div>
+  </li>
+</ul>
+	
+</body>
+</html>
 

@@ -9,8 +9,8 @@ import br.com.poc.logistica.controller.TarifaController;
 
 public class PocApplication extends Application {
 
-	private Set<Object> singletons = new HashSet<Object>();
-	private Set<Class<?>> classes = new HashSet<Class<?>>();
+	private Set<Object> singletons = new HashSet<>();
+	private Set<Class<?>> classes = new HashSet<>();
 
 	public PocApplication() {
 		classes.add(TarifaController.class);

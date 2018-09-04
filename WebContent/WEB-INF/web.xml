@@ -12,6 +12,6 @@
 	
  	<servlet-mapping>
         <servlet-name>br.com.poc.logistica.application.PocApplication</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/servico/*</url-pattern>
     </servlet-mapping>
 </web-app>
