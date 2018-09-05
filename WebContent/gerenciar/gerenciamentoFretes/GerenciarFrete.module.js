@@ -1,11 +1,16 @@
 var app = angular.module('GerenciarFrete.module', [])
  
-app.controller('listartarifas', function($scope, $http, $location) {
+app.controller('pesquisartarifas', function($scope, $http, $location) {
 
-	$scope.listartarifas = function() {
-		var url = "/sislogis/rest/tarifa/listartarifas";
+	$scope.pesquisartarifas = function() {
+		var url = "/sislogis/rest/tarifa/pesquisartarifas";
  
-		$http.get(url).then(function(response) {
+ 		var filtros = {
+ 			'descTarifa' : $scope.descTarifa == '' ? null : $scope.descTarifa,
+ 			'valorTarifa' : $scope.valorTarifa == '' ? null : $scope.valorTarifa 
+ 		};
+
+		$http.get(url, filtros).then(function(response) {
 			$scope.listaTarifa = response.data;
 		});
 	}
