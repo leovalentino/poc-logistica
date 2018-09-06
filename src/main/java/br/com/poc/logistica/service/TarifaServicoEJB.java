@@ -23,7 +23,7 @@ public class TarifaServicoEJB implements TarifaServico {
 	@Override
 	public List<Tarifa> pesquisarTarifa(String descTarifa, BigDecimal valorTarifa) {
 		 Query query = em.createQuery(FabricaQuery.criarQueryPesquisarTarifa(), Tarifa.class);
-		 query.setParameter("descTarifa", "%" + descTarifa.toUpperCase() + "%");
+		 query.setParameter("descTarifa", "%" + FabricaQuery.tratarParametroLike(descTarifa) + "%");
 		 query.setParameter("valorTarifa", valorTarifa);
 		 return query.getResultList();
 	}

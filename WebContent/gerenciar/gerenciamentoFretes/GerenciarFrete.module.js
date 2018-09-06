@@ -1,10 +1,12 @@
-var app = angular.module('GerenciarFrete.module', [])
+var app = angular.module('GerenciarFrete.module', ['ngTable'])
  
 app.controller('pesquisartarifas', function($scope, $http, $location) {
 
 	$scope.pesquisartarifas = function() {
 		var url = "/sislogis/rest/tarifa/pesquisartarifas";
  
+		var self = this;
+
  		var filtros = {
 
  			params: {
@@ -15,6 +17,8 @@ app.controller('pesquisartarifas', function($scope, $http, $location) {
 
 		$http.get(url, filtros).then(function(response) {
 			$scope.listaTarifa = response.data;
+			var data = $scope.listaTarifa;
+			self.tabelParams = new NgTableParams({}, {dataset : data});
 		});
 	}
 });
