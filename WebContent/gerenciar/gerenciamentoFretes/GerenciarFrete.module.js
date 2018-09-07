@@ -1,6 +1,6 @@
-var app = angular.module('GerenciarFrete.module', ['ngTable'])
+var app = angular.module('GerenciarFrete.module', ['ngTable']);
  
-app.controller('pesquisartarifas', function($scope, $http, $location) {
+app.controller('pesquisartarifas', function($scope, $http, NgTableParams) {
 
 	$scope.pesquisartarifas = function() {
 		var url = "/sislogis/rest/tarifa/pesquisartarifas";
@@ -17,8 +17,29 @@ app.controller('pesquisartarifas', function($scope, $http, $location) {
 
 		$http.get(url, filtros).then(function(response) {
 			$scope.listaTarifa = response.data;
-			var data = $scope.listaTarifa;
-			self.tabelParams = new NgTableParams({}, {dataset : data});
+			self.tableParams = new NgTableParams({}, {dataset : $scope.listaTarifa});
 		});
 	}
 });
+
+app.controller('incluirtarifa', function($scope, $http) {
+	$scope.incluirtarifa = function() {
+		var url = "/sislogis/rest/tarifa/incluirtarifa";
+
+		var dados = {
+			descTarifa : $scope.descTarifa,
+			valorTarifa : $scope.valorTarifa
+		};
+
+		$http.post(url, dados).then(function(response) {
+			$scope.postResultMessage = "Dados inseridos com sucesso."
+			$scope.fecharModal();
+		});
+	};
+
+	$scope.fecharModal = function() {
+		var modal_popup = angular.element( document.querySelector( '#exampleModal' ) );
+		modal_popup.modal('hide');
+	};
+});
+

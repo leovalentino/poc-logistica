@@ -28,4 +28,9 @@ public class TarifaServicoEJB implements TarifaServico {
 		 return query.getResultList();
 	}
 	
+	@Override
+	public void salvar(Tarifa tarifa) {
+		em.persist(tarifa);
+	}
+	
 }

@@ -14,4 +14,6 @@ public interface TarifaServico {
 
 	List<Tarifa> pesquisarTarifa(String descTarifa, BigDecimal valorTarifa);
 
+	void salvar(Tarifa tarifa);
+
 }

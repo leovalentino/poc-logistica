@@ -3,8 +3,8 @@
 <title>Controle de Frete</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+       	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="GerenciarFrete.module.js"></script>
 		<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
@@ -12,12 +12,6 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 		<link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
-<script type="text/javascript" language="javascript" class="init">
-	
-$(document).ready(function() {
-	$('#tabelaTarifas').DataTable();
-} );
-	</script>
 </head>
 
 <body>
@@ -36,14 +30,12 @@ $(document).ready(function() {
 		</div>
 		<div>
 			Resultado:<br>
-			<table ng-table="vm.tableParams" class="table" show-filter="true">
+			<table ng-table="tableParams" class="table" show-filter="true">
 				<thead>
 					<tr>
 						<th>Id Tarifa</th>
 						<th>Descrição</th>
 						<th>Valor</th>
-						<th>Campo3</th>
-						<th>Campo4</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -51,36 +43,37 @@ $(document).ready(function() {
 						<td sortable="'tarifa.idTarifa'">{{tarifa.idTarifa}}</td>
 						<td sortable="'tarifa.descTarifa'">{{tarifa.descTarifa}}</td>
 						<td>{{tarifa.valorTarifa}}</td>
-						<td>{{tarifa.idTarifa}}</td>
-						<td>{{tarifa.idTarifa}}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Simular</button>
-	<button>Incluir</button>
-</div>
+	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Incluir</button>
+	<button type="button" class="btn btn-primary">Simular</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" ng-controller="incluirtarifa" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	    	<form name="tarifaForm" ng-submit="incluirtarifa()"  method="post">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Incluir Tarifa</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      
+			   <div class="modal-body">
+			      Descrição Tarifa:<input class="form-control" type="text" ng-model="descTarifa" placeholder="Descrição Tarifa"/> <br>
+				  Valor Tarifa:<input class="form-control" type="number" ng-model="valorTarifa" placeholder="Valor Tarifa"/>
+			   </div>
+			   <div class="modal-footer">
+		         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+		         <button type="submit" class="btn btn-primary">Incluir</button>
+		     	</div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+	</div>
 </body>
