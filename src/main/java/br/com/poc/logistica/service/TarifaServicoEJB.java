@@ -31,6 +31,19 @@ public class TarifaServicoEJB implements TarifaServico {
 	@Override
 	public void salvar(Tarifa tarifa) {
 		em.persist(tarifa);
+		em.flush();
+	}
+	
+	@Override
+	public void alterar(Tarifa tarifa) {
+		em.merge(tarifa);
+		em.flush();
+	}
+
+	@Override
+	public void excluir(Integer idTarifa) {
+		Tarifa tarifa = em.find(Tarifa.class, idTarifa);
+		em.remove(tarifa);
 	}
 	
 }

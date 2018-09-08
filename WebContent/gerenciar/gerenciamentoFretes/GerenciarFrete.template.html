@@ -3,15 +3,12 @@
 <title>Controle de Frete</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-       	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="GerenciarFrete.module.js"></script>
-		<script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
-        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type='text/javascript' src="GerenciarFrete.module.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-		<link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
 </head>
 
 <body>
@@ -19,14 +16,20 @@
 <div class = "col-sm-4  col-md-offset-4" ng-app="GerenciarFrete.module">
 	<h1>Controle de Tarifas</h1>
 	
-	<div ng-controller = "pesquisartarifas">
-		<h3>Pesquisar Tarifas</h3>
+	<div ng-controller = "crudtarifa">
+		<div class="alert alert-success alert-dismissible" ng-show="sucesso" >
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			{{mensagemSucesso}}
+		</div>
 		<div class="form-group" ng-submit="pesquisartarifas()">
 			<form>
 				Descrição Tarifa:<input class="form-control" type="text" ng-model="descTarifa" placeholder="Descrição Tarifa"/> <br>
 				Valor Tarifa:<input class="form-control" type="number" ng-model="valorTarifa" placeholder="Valor Tarifa"/>
 			</form>
-			<button ng-click="pesquisartarifas()" class="btn btn-primary">Buscar</button> <br>
+			<div align="rigth">
+				<button ng-click="pesquisartarifas()" class="btn btn-primary">Buscar</button>
+				<button type="button" class="btn btn-success" ng-click="incluirtarifa()">Incluir</button>
+			</div>
 		</div>
 		<div>
 			Resultado:<br>
@@ -36,44 +39,46 @@
 						<th>Id Tarifa</th>
 						<th>Descrição</th>
 						<th>Valor</th>
+						<th>Alterar</th>
+						<th>Excluir</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="tarifa in listaTarifa">
-						<td sortable="'tarifa.idTarifa'">{{tarifa.idTarifa}}</td>
-						<td sortable="'tarifa.descTarifa'">{{tarifa.descTarifa}}</td>
-						<td>{{tarifa.valorTarifa}}</td>
+						<td class="text-center" >{{tarifa.idTarifa}}</td>
+						<td class="text-center">{{tarifa.descTarifa}}</td>
+						<td class="text-center">{{tarifa.valorTarifa | currency:"R$"}}</td>
+						<td><button type="button" ng-click="alterartarifa(tarifa)" class="btn btn-warning btn-xs">Alterar</button></td>
+						<td><button class="btn btn-danger btn-xs" ng-click="excluirtarifa(tarifa)">Excluir</button></td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-	</div>
 
-	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Incluir</button>
-	<button type="button" class="btn btn-primary">Simular</button>
-
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" ng-controller="incluirtarifa" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	    	<form name="tarifaForm" ng-submit="incluirtarifa()"  method="post">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Incluir Tarifa</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      
-			   <div class="modal-body">
-			      Descrição Tarifa:<input class="form-control" type="text" ng-model="descTarifa" placeholder="Descrição Tarifa"/> <br>
-				  Valor Tarifa:<input class="form-control" type="number" ng-model="valorTarifa" placeholder="Valor Tarifa"/>
-			   </div>
-			   <div class="modal-footer">
-		         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-		         <button type="submit" class="btn btn-primary">Incluir</button>
-		     	</div>
-	      </form>
-	    </div>
-	  </div>
+		<div class="modal fade" id="modalTarifa" tabindex="-1" role="dialog" aria-labelledby="modalTarifaLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		    	<form name="tarifaForm" ng-submit="enviarFormulario()"  method="post">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="modalTarifaLabel">{{tituloModal}}</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      
+				   <div class="modal-body">
+				      Descrição Tarifa:<input class="form-control" type="text" ng-model="descTarifaModal" placeholder="Descrição Tarifa"/> <br>
+					  Valor Tarifa:<input class="form-control" type="number" ng-model="valorTarifaModal" placeholder="Valor Tarifa"/>
+				   </div>
+				   <div class="modal-footer">
+			         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+			         <button type="submit" class="btn btn-primary">{{acao}}</button>
+			     	</div>
+		      </form>
+		    </div>
+		  </div>
+		</div>
 	</div>
 	</div>
 </body>

@@ -16,4 +16,8 @@ public interface TarifaServico {
 
 	void salvar(Tarifa tarifa);
 
+	void alterar(Tarifa tarifa);
+
+	void excluir(Integer idTarifa);
+
 }
