@@ -25,13 +25,6 @@ public class TarifaController {
 	private TarifaServico servico;
 	
 	@GET
-	@Path("/listartarifas")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Tarifa> listarTarifas() {
-		return servico.listarTarifas();
-	}
-	
-	@GET
 	@Path("/pesquisartarifas")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Tarifa> pesquisarTarifa(@QueryParam("descTarifa") String descTarifa,

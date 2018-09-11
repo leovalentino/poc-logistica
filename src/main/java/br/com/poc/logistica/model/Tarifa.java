@@ -1,6 +1,5 @@
 package br.com.poc.logistica.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TARIFA")
-public class Tarifa implements Serializable {
+public class Tarifa extends PocEntidade<Integer> {
 
 	private static final long serialVersionUID = -5565283961775771044L;
 
@@ -36,13 +35,23 @@ public class Tarifa implements Serializable {
 		this.descTarifa = descTarifa;
 		this.valorTarifa = valorTarifa;
 	}
-
+	
 	public Integer getIdTarifa() {
 		return idTarifa;
 	}
 
 	public void setIdTarifa(Integer idTarifa) {
 		this.idTarifa = idTarifa;
+	}
+
+	@Override
+	public void setId(Integer pk) {
+		this.idTarifa = pk;
+	}
+
+	@Override
+	public Integer getId() {
+		return idTarifa;
 	}
 
 	public String getDescTarifa() {

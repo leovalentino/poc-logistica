@@ -10,8 +10,6 @@ import br.com.poc.logistica.model.Tarifa;
 @Local
 public interface TarifaServico {
 
-	List<Tarifa> listarTarifas();
-
 	List<Tarifa> pesquisarTarifa(String descTarifa, BigDecimal valorTarifa);
 
 	void salvar(Tarifa tarifa);
