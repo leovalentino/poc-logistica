@@ -2,16 +2,26 @@
 <head>
 <title>Gerenciar Devolucao</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type='text/javascript' src="GerenciarFrete.module.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 </head>
 
 <body>
+
+<div class = "col-sm-4  col-md-offset-4" ng-app="GerenciarDevolucao.module">
 	<h1>Gerenciar Devoluções</h1>
-	<form>
-		Pedido: <input type="text" name="pedido"/> <br/>
-		Data Entrega: <input type="date" name="dataEntrega"/> <br/>
-		Produto: <input type="text" name="produto"> </br>
-		Valor: <input type="text" name="valor"> </br>
-		Motivo Devolução: <textarea name="motivo"> </textarea>
+	<form class="form-group">
+		Pedido: <input class="form-control" type="text" name="pedido"/> <br/>
+		Data Entrega: <input class="form-control" type="date" name="dataEntrega"/> <br/>
+		Produto: <input class="form-control" type="text" name="produto"> </br>
+		Valor: <input class="form-control" type="text" name="valor"> </br>
+		Motivo Devolução: <textarea class="form-control" name="motivo"> </textarea>
 	</form>
-	<button>Salvar</button>
+	<button type="button" class="btn btn-success">Incluir</button>
+</div>
 </body>
