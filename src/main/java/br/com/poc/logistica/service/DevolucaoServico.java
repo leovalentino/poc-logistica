@@ -11,7 +11,13 @@ import br.com.poc.logistica.model.Devolucao;
 @Local
 public interface DevolucaoServico {
 
-	List<Devolucao> pesquisarListaDevolucao(Integer numPedido, Date dataDevolucao,
+	List<Devolucao> pesquisarDevolucao(Integer numPedido, Date dataDevolucao,
             BigDecimal valorPedido);
+	
+	void salvar(Devolucao tarifa);
+
+	void alterar(Devolucao tarifa);
+
+	void excluir(Integer idDevolucao);
 	
 }

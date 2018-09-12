@@ -6,7 +6,7 @@
 		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
        	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type='text/javascript' src="GerenciarFrete.module.js"></script>
+		<script type='text/javascript' src="GerenciarDevolucao.module.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 </head>
@@ -43,5 +43,30 @@
 		Motivo Devolução: <textarea class="form-control" name="motivo"> </textarea>
 	</form>
 	<button type="button" class="btn btn-success">Incluir</button>
+
+  <div class="modal fade" id="modalDevolucao" tabindex="-1" role="dialog" aria-labelledby="modalDevolucaoLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form name="tarifaForm" ng-submit="enviarFormulario()"  method="post">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalDevolucaoLabel">{{tituloModal}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            
+           <div class="modal-body">
+              Descrição Devolucao:<input class="form-control" type="text" ng-model="descDevolucaoModal" placeholder="Descrição Devolucao"/> <br>
+              Valor Devolucao:<input class="form-control" type="number" ng-model="valorDevolucaoModal" placeholder="Valor Devolucao"/>
+           </div>
+           <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+               <button type="submit" class="btn btn-primary">{{acao}}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
 </div>
 </body>
