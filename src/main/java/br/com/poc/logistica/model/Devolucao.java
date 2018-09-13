@@ -1,16 +1,13 @@
 package br.com.poc.logistica.model;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,9 +21,9 @@ public class Devolucao extends PocEntidade<Integer> {
 	private Integer idDevolucao;
 	private Date dataDevolucao;
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval = true)
+	@ManyToOne
 	@JoinColumn(name = "idProduto")
-	private List<Produto> produtos;
+	private Produto produto;
 	
 	@ManyToOne
 	@JoinColumn(name = "idPedido")
@@ -50,12 +47,12 @@ public class Devolucao extends PocEntidade<Integer> {
 		this.dataDevolucao = dataDevolucao;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
+	public Produto getProdutos() {
+		return produto;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setProdutos(Produto produtos) {
+		this.produto = produtos;
 	}
 
 	public Pedido getPedido() {

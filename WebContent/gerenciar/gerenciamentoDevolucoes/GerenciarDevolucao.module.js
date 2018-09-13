@@ -10,8 +10,9 @@ app.controller('cruddevolucao', function($scope, $http) {
  		var filtros = {
 
  			params: {
-	 			'descDevolucao' : $scope.descDevolucao == '' ? null : $scope.descDevolucao,
-	 			'valorDevolucao' : $scope.valorDevolucao == '' ? null : $scope.valorDevolucao 
+	 			'numPedido' : $scope.numPedido == '' ? null : $scope.numPedido,
+	 			'dataPedido' : $scope.dataPedido == '' ? null : $scope.dataPedido,
+	 			'valor' : $scope.valor == '' ? null : $scope.valor
  		    }
  		};
 

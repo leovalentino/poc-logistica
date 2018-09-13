@@ -27,7 +27,7 @@ public class DevolucaoController {
 	
 	
 	@GET
-	@Path("/pesquisardevolucaos")
+	@Path("/pesquisardevolucoes")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Devolucao> pesquisarDevolucao(@QueryParam("numPedido") Integer numPedido, 
 											  @QueryParam("dataDevolucao")Date dataDevolucao,
