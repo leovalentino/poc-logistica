@@ -18,10 +18,10 @@ public class FabricaQuery {
 	
 	public static String criarQueryPesquisarDevolucao() {
 		StringBuilder jpql = new StringBuilder();
-		jpql.append("Select t from br.com.poc.logistica.model.Devolucao d ");
-		jpql.append("where (:idPedido is null or d.pedido.idPedido like :idPedido) ");
+		jpql.append("Select d from br.com.poc.logistica.model.Devolucao d ");
+		jpql.append("where (:numPedido is null or d.pedido.idPedido = :numPedido) ");
 		jpql.append("and (:valorPedido is null or d.pedido.valorPedido = :valorPedido) ");
-		jpql.append("and (:dataDevolucao is null or d.dataDevolucao = :dataDevolucao) ");
+		jpql.append("and ( CAST(:dataPedido AS date) is null or d.pedido.dataPedido = :dataPedido) ");
 		return jpql.toString();
 	}
 

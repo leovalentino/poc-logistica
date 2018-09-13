@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.ws.rs.core.Application;
 
+import br.com.poc.logistica.controller.DevolucaoController;
 import br.com.poc.logistica.controller.TarifaController;
 
 public class PocApplication extends Application {
@@ -14,7 +15,8 @@ public class PocApplication extends Application {
 
 	public PocApplication() {
 		classes.add(TarifaController.class);
-	   }
+		classes.add(DevolucaoController.class);
+	}
 
 	@Override
 	public Set<Class<?>> getClasses() {

@@ -33,21 +33,47 @@
   </div>
 </nav>
 
-<div class = "col-sm-4  col-md-offset-4" ng-app="GerenciarDevolucao.module">
+<div ng-app="GerenciarDevolucao.module">
+<div ng-controller = "cruddevolucao">
+<div class = "col-sm-4  col-md-offset-4">
 	<h1>Gerenciar Devoluções</h1>
-	<form class="form-group">
-		Pedido: <input class="form-control" type="text" name="pedido"/> <br/>
-		Data Entrega: <input class="form-control" type="date" name="dataEntrega"/> <br/>
-		Produto: <input class="form-control" type="text" name="produto"> </br>
+	<form class="form-group" ng-submit="pesquisardevolucoes()">
+		Pedido: <input class="form-control" type="text" name="numPedido"/> <br/>
+		Data Pedido: <input class="form-control" type="date" name="dataPedido"/> <br/>
 		Valor: <input class="form-control" type="text" name="valor"> </br>
-		Motivo Devolução: <textarea class="form-control" name="motivo"> </textarea>
-	</form>
-	<button type="button" class="btn btn-success">Incluir</button>
+	  <button type="button" class="btn btn-success" ng-click="incluirdevolucao()">Registrar</button>
+    <button ng-click="pesquisardevolucoes()" class="btn btn-default">Pesquisar</button>
+  </form>
+</div>
+    <div class="col-sm-9  col-md-offset-2">
+      Resultado:<br>
+      <table ng-table="tableParams" class="table" show-filter="true">
+        <thead>
+          <tr>
+            <th>Num Pedido</th>
+            <th>Produto</th>
+            <th>Valor</th>
+            <th>Data Pedido</th>
+            <th>Cliente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="devolucao in listaDevolucao">
+            <td class="text-center" >{{devolucao.pedido.idpedido}}</td>
+            <td class="text-center">{{devolucao.produtos.descProduto}}</td>
+            <td class="text-center">{{devolucao.pedido.valorPedido | currency:"R$"}}</td>
+            <td class="text-center">{{devolucao.pedido.dataPedido}}</td>
+            <td class="text-center">{{devolucao.pediddo.cliente.nomeCliente}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
   <div class="modal fade" id="modalDevolucao" tabindex="-1" role="dialog" aria-labelledby="modalDevolucaoLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <form name="tarifaForm" ng-submit="enviarFormulario()"  method="post">
+          <form name="devolucaoForm" ng-submit="enviarFormulario()"  method="post">
             <div class="modal-header">
               <h5 class="modal-title" id="modalDevolucaoLabel">{{tituloModal}}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -58,6 +84,7 @@
            <div class="modal-body">
               Descrição Devolucao:<input class="form-control" type="text" ng-model="descDevolucaoModal" placeholder="Descrição Devolucao"/> <br>
               Valor Devolucao:<input class="form-control" type="number" ng-model="valorDevolucaoModal" placeholder="Valor Devolucao"/>
+              Motivo Devolução: <textarea class="form-control" name="motivo"> </textarea>
            </div>
            <div class="modal-footer">
                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -67,6 +94,6 @@
         </div>
       </div>
     </div>
-
+ </div>
 </div>
 </body>
