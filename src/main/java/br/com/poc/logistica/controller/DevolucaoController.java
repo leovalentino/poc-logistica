@@ -17,6 +17,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import br.com.poc.logistica.model.Devolucao;
+import br.com.poc.logistica.model.DevolucaoVO;
 import br.com.poc.logistica.service.DevolucaoServico;
 
 @Path("/devolucao")
@@ -29,7 +30,7 @@ public class DevolucaoController {
 	@GET
 	@Path("/pesquisardevolucoes")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Devolucao> pesquisarDevolucao(@QueryParam("numPedido") Integer numPedido, 
+	public List<DevolucaoVO> pesquisarDevolucao(@QueryParam("numPedido") Integer numPedido, 
 											  @QueryParam("dataDevolucao")Date dataDevolucao,
 											  @QueryParam("valorPedido") BigDecimal valorPedido) {
 		return servico.pesquisarDevolucao(numPedido, dataDevolucao, valorPedido);

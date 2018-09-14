@@ -96,6 +96,5 @@ app.controller('cruddevolucao', function($scope, $http) {
 		var modal_popup = angular.element( document.querySelector('#modalDevolucao'));
 		modal_popup.modal('show');
 	};
+
 });
-
-

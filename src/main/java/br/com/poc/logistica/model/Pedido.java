@@ -22,10 +22,14 @@ public class Pedido extends PocEntidade<Integer> {
 	private Integer idPedido;
 	private Date dataPedido;
 	private BigDecimal valorPedido;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
+
+	@ManyToOne
+	@JoinColumn(name = "idProduto")
+	private Produto produto;
 
 	public Integer getIdPedido() {
 		return idPedido;
@@ -49,6 +53,14 @@ public class Pedido extends PocEntidade<Integer> {
 
 	public void setValorPedido(BigDecimal valorPedido) {
 		this.valorPedido = valorPedido;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	@Override
