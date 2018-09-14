@@ -4,8 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-       	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 		<script type='text/javascript' src="GerenciarDevolucao.module.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
@@ -50,20 +51,20 @@
       <table ng-table="tableParams" class="table" show-filter="true">
         <thead>
           <tr>
-            <th>Num Pedido</th>
-            <th>Produto</th>
-            <th>Valor</th>
-            <th>Data Pedido</th>
-            <th>Cliente</th>
+            <th class="text-center">Num Pedido</th>
+            <th class="text-center">Produto</th>
+            <th class="text-center">Valor</th>
+            <th class="text-center">Data Pedido</th>
+            <th class="text-center">Cliente</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="devolucao in listaDevolucao">
-            <td class="text-center" >{{devolucao.pedido.idpedido}}</td>
-            <td class="text-center">{{devolucao.produtos.descProduto}}</td>
-            <td class="text-center">{{devolucao.pedido.valorPedido | currency:"R$"}}</td>
-            <td class="text-center">{{devolucao.pedido.dataPedido}}</td>
-            <td class="text-center">{{devolucao.pediddo.cliente.nomeCliente}}</td>
+            <td class="text-center">{{devolucao.numPedido}}</td>
+            <td class="text-center">{{devolucao.descProduto}}</td>
+            <td class="text-center">{{devolucao.valorPedido | currency:"R$"}}</td>
+            <td class="text-center">{{devolucao.dataPedido}}</td>
+            <td class="text-center">{{devolucao.nomeCliente}}</td>
             <td></td>
           </tr>
         </tbody>

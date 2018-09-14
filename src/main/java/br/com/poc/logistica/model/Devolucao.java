@@ -22,10 +22,6 @@ public class Devolucao extends PocEntidade<Integer> {
 	private Date dataDevolucao;
 	
 	@ManyToOne
-	@JoinColumn(name = "idProduto")
-	private Produto produto;
-	
-	@ManyToOne
 	@JoinColumn(name = "idPedido")
 	private Pedido pedido;
 	
@@ -45,14 +41,6 @@ public class Devolucao extends PocEntidade<Integer> {
 
 	public void setDataDevolucao(Date dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
-	}
-
-	public Produto getProdutos() {
-		return produto;
-	}
-
-	public void setProdutos(Produto produtos) {
-		this.produto = produtos;
 	}
 
 	public Pedido getPedido() {

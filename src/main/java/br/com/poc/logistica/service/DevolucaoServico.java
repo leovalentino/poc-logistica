@@ -7,11 +7,12 @@ import java.util.List;
 import javax.ejb.Local;
 
 import br.com.poc.logistica.model.Devolucao;
+import br.com.poc.logistica.model.DevolucaoVO;
 
 @Local
 public interface DevolucaoServico {
 
-	List<Devolucao> pesquisarDevolucao(Integer numPedido, Date dataDevolucao,
+	List<DevolucaoVO> pesquisarDevolucao(Integer numPedido, Date dataDevolucao,
             BigDecimal valorPedido);
 	
 	void salvar(Devolucao tarifa);
