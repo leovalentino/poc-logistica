@@ -6,6 +6,8 @@ public class DevolucaoVO {
 
 	private Integer idDevolucao;
 	private String dataDevolucao;
+	private Integer idProduto;
+	private BigDecimal valorProduto;
 	private String descProduto;
 	private Integer numPedido;
 	private String dataPedido;
@@ -29,12 +31,20 @@ public class DevolucaoVO {
 		this.dataDevolucao = dataDevolucao;
 	}
 
-	public BigDecimal getValorPedido() {
-		return valorPedido;
+	public Integer getIdProduto() {
+		return idProduto;
 	}
 
-	public void setValorPedido(BigDecimal valorPedido) {
-		this.valorPedido = valorPedido;
+	public void setIdProduto(Integer idProduto) {
+		this.idProduto = idProduto;
+	}
+
+	public BigDecimal getValorProduto() {
+		return valorProduto;
+	}
+
+	public void setValorProduto(BigDecimal valorProduto) {
+		this.valorProduto = valorProduto;
 	}
 
 	public String getDescProduto() {
@@ -59,6 +69,14 @@ public class DevolucaoVO {
 
 	public void setDataPedido(String dataPedido) {
 		this.dataPedido = dataPedido;
+	}
+
+	public BigDecimal getValorPedido() {
+		return valorPedido;
+	}
+
+	public void setValorPedido(BigDecimal valorPedido) {
+		this.valorPedido = valorPedido;
 	}
 
 	public String getDescMotivo() {

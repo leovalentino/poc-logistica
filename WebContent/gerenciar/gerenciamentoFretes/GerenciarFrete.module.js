@@ -1,4 +1,8 @@
 var app = angular.module('GerenciarFrete.module', []);
+
+app.filter('pesquisartarifas', function() {
+	
+});
  
 app.controller('crudtarifa', function($scope, $http) {
 	$scope.sucesso = false;

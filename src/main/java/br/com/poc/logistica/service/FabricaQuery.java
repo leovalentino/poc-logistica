@@ -25,4 +25,11 @@ public class FabricaQuery {
 		return jpql.toString();
 	}
 
+	public static String criarQueryPesquisarPedidoPorNum() {
+		StringBuilder jpql = new StringBuilder();
+		jpql.append("Select p from br.com.poc.logistica.model.Pedido p ");
+		jpql.append("where p.idPedido = :numPedido ");
+		return jpql.toString();
+	}
+
 }

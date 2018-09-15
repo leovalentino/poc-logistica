@@ -34,22 +34,21 @@
 </nav>
 
 <div ng-app="GerenciarFrete.module">
-	<div ng-controller = "crudtarifa">
+	<div ng-controller = "crudtarifa" data-ng-init="pesquisartarifas()">
 		<div class="col-sm-4  col-md-offset-4">
 			<h1>Controle de Tarifas</h1>
 				<div class="alert alert-success alert-dismissible" ng-show="sucesso">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 					{{mensagemSucesso}}
 				</div>
-				<div class="form-group" ng-submit="pesquisartarifas()">
+				<div class="form-group">
 					<form>
-						Descrição Tarifa:<input class="form-control" type="text"
-							ng-model="descTarifa" placeholder="Descrição Tarifa" /> <br>
+						Descrição Tarifa:<input class="form-control" type="number"
+							ng-model="descTarifa" placeholder="Descrição Tarifa" ng-change="pesquisartarifas()" /> <br>
 						Valor Tarifa:<input class="form-control" type="number"
-							ng-model="valorTarifa" placeholder="Valor Tarifa" />
+							ng-model="valorTarifa" placeholder="Valor Tarifa" ng-change="pesquisartarifas()"/>
 					</form>
 					<div align="rigth">
-						<button ng-click="pesquisartarifas()" class="btn btn-primary">Buscar</button>
 						<button type="button" class="btn btn-success"
 							ng-click="incluirtarifa()">Incluir</button>
 					</div>
