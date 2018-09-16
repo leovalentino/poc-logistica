@@ -4,6 +4,10 @@ import java.math.BigDecimal;
 
 public class DevolucaoVO {
 
+	private Integer idCliente;
+	private String nomeCliente;
+	private String cpfCnpj;
+
 	private Integer idDevolucao;
 	private String dataDevolucao;
 	private Integer idProduto;
@@ -13,7 +17,30 @@ public class DevolucaoVO {
 	private String dataPedido;
 	private BigDecimal valorPedido;
 	private String descMotivo;
-	private String nomeCliente;
+
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
+
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
+
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
+
+	public String getCpfCnpj() {
+		return cpfCnpj;
+	}
+
+	public void setCpfCnpj(String cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
+	}
 
 	public Integer getIdDevolucao() {
 		return idDevolucao;
@@ -85,14 +112,6 @@ public class DevolucaoVO {
 
 	public void setDescMotivo(String descMotivo) {
 		this.descMotivo = descMotivo;
-	}
-
-	public String getNomeCliente() {
-		return nomeCliente;
-	}
-
-	public void setNomeCliente(String nomeCliente) {
-		this.nomeCliente = nomeCliente;
 	}
 
 }

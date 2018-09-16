@@ -35,10 +35,6 @@ public class Pedido extends PocEntidade<Integer> {
 		return idPedido;
 	}
 
-	public void setIdPedido(Integer idPedido) {
-		this.idPedido = idPedido;
-	}
-
 	public Date getDataPedido() {
 		return dataPedido;
 	}
@@ -55,12 +51,24 @@ public class Pedido extends PocEntidade<Integer> {
 		this.valorPedido = valorPedido;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public Produto getProduto() {
 		return produto;
 	}
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
+	}
+
+	public void setIdPedido(Integer idPedido) {
+		this.idPedido = idPedido;
 	}
 
 	@Override

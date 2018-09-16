@@ -32,4 +32,16 @@ public class FabricaQuery {
 		return jpql.toString();
 	}
 
+	public static String criarQueryPesquisarEntrega() {
+		StringBuilder jpql = new StringBuilder();
+		jpql.append("Select e from br.com.poc.logistica.model.Entrega e ");
+		jpql.append("where (:numPedido is null or e.pedido.idPedido = :numPedido) ");
+		jpql.append("and (:nomeTransportadora is null or e.transportadora.nomeTransportadora = :nomeTransportadora) ");
+		jpql.append("and ( CAST(:datePedido AS date) is null or e.pedido.dataPedido = :datePedido) ");
+		jpql.append("and (:descProduto is null or e.pedido.produto.descProduto = :descProduto) ");
+		jpql.append("and (:descSituacaoEntrega is null or e.situacaoEntrega.descSituacaoEntrega = :descSituacaoEntrega) ");
+		jpql.append("and (:nomeCliente is null or e.pedido.cliente.nomeCliente = :nomeCliente) ");
+		return jpql.toString();
+	}
+
 }

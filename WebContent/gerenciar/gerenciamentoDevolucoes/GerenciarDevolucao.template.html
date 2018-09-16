@@ -3,99 +3,139 @@
 <title>Gerenciar Devolucao</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
-		<script type='text/javascript' src="GerenciarDevolucao.module.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script type='text/javascript'
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type='text/javascript'
+  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+<script type="text/javascript"
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type='text/javascript' src="GerenciarDevolucao.module.js"></script>
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 </head>
 
 <body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">SISLOGIS</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">GERENCIAR
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="../../gerenciar/gerenciamentoDevolucoes/GerenciarDevolucao.template.html">GERENCIAR DEVOLUÇÃO</a></li>
-          <li><a href="../../gerenciar/gerenciamentoEntregas/GerenciarEntregas.template.html">GERENCIAR ENTREGAS</a></li>
-          <li><a href="../../gerenciar/gerenciamentoFretes/GerenciarFrete.template.html">GERENCIAR FRETE</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<div ng-app="GerenciarDevolucao.module">
-<div ng-controller = "cruddevolucao" data-ng-init="pesquisardevolucoes()">
-<div class = "col-sm-4  col-md-offset-4">
-	<h1>Gerenciar Devoluções</h1>
-	<form class="form-group" ng-submit="pesquisardevolucoes()">
-		Pedido: <input class="form-control" type="text" name="numPedido" ng-model="numPedido" ng-change="pesquisardevolucoes()"/> <br/>
-		Data Pedido: <input class="form-control" type="date" name="dataPedido" ng-model="dataPedido" ng-change="pesquisardevolucoes()"/> <br/>
-		Valor: <input class="form-control" type="text" name="valor" ng-model="valor" ng-change="pesquisardevolucoes()"> </br>
-	  <button type="button" class="btn btn-success" ng-click="incluirdevolucao()">Registrar</button>
-  </form>
-</div>
-    <div class="col-sm-9  col-md-offset-2">
-      Resultado:<br>
-      <table ng-table="tableParams" class="table" show-filter="true">
-        <thead>
-          <tr>
-            <th class="text-center">Num Pedido</th>
-            <th class="text-center">Produto</th>
-            <th class="text-center">Valor</th>
-            <th class="text-center">Data Pedido</th>
-            <th class="text-center">Cliente</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="devolucao in listaDevolucao">
-            <td class="text-center">{{devolucao.numPedido}}</td>
-            <td class="text-center">{{devolucao.descProduto}}</td>
-            <td class="text-center">{{devolucao.valorPedido | currency:"R$"}}</td>
-            <td class="text-center">{{devolucao.dataPedido}}</td>
-            <td class="text-center">{{devolucao.nomeCliente}}</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  <div class="modal fade" id="modalDevolucao" tabindex="-1" role="dialog" aria-labelledby="modalDevolucaoLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <form name="devolucaoForm" ng-submit="enviarFormulario()"  method="post">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalDevolucaoLabel">{{tituloModal}}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            
-           <div class="modal-body">
-              Número do pedido:<input class="form-control" type="number" ng-model="numPedidoModal" ng-change="pesquisarpedidopornum()"
-                         placeholder="Númerdo do pedido"/> <br>
-              Produto:<input class="form-control" type="text" name="pedido.descProduto" ng-model="pedido.descProduto" placeholder="Produto" readonly/>
-              Data do pedido:<input class="form-control" type="text" name="pedido.dataPedido" ng-model="pedido.dataPedido" placeholder="Data do pedido" readonly/>
-              Motivo Devolução: <textarea class="form-control" name="motivo" ng-model="pedido.descMotivo"> </textarea>
-           </div>
-           <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-               <button type="submit" class="btn btn-primary">{{acao}}</button>
-            </div>
-          </form>
-        </div>
+	<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">SISLOGIS</a>
       </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown"><a class="dropdown-toggle"
+          data-toggle="dropdown" href="#">GERENCIAR <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a
+              href="../../gerenciar/gerenciamentoDevolucoes/GerenciarDevolucao.template.html">GERENCIAR
+                DEVOLUÇÃO</a></li>
+            <li><a
+              href="../../gerenciar/gerenciamentoEntregas/GerenciarEntregas.template.html">GERENCIAR
+                ENTREGAS</a></li>
+            <li><a href="../../gerenciar/gerenciamentoFretes/GerenciarFrete.template.html">GERENCIAR
+                FRETE</a></li>
+          </ul></li>
+      </ul>
     </div>
- </div>
-</div>
+  </nav>
+
+	<div ng-app="GerenciarDevolucao.module">
+		<div ng-controller="cruddevolucao"
+			data-ng-init="pesquisardevolucoes()">
+			<div class="col-sm-6  col-md-offset-3">
+				<h1>Gerenciar Devoluções</h1>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form>
+							<div class="form-group col-md-4">
+								<label for="pedido">Pedido:</label> <input class="form-control"
+									type="text" name="numPedido" ng-model="numPedido"
+									ng-change="pesquisardevolucoes()" />
+							</div>
+							<div class="form-group col-md-4">
+								<label for="dataPedido">Data Pedido:</label> <input
+									class="form-control" type="date" name="dataPedido"
+									ng-model="dataPedido" ng-change="pesquisardevolucoes()" />
+							</div>
+							<div class="form-group col-md-4">
+								<label for="dataPedido">Valor: </label> <input
+									class="form-control" type="text" name="valor" ng-model="valor"
+									ng-change="pesquisardevolucoes()" />
+							</div>
+
+							<div class="text-right">
+								<div class="form-group col-md-4">
+									<button type="button" class="btn btn-success btn-block"
+										ng-click="incluirdevolucao()">Registrar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-9  col-md-offset-2">
+				Devoluções Registradas:<br>
+				<table class="table table-striped" class="table" show-filter="true">
+					<thead>
+						<tr>
+							<th class="text-center">Num Pedido</th>
+							<th>Produto</th>
+							<th>Valor</th>
+							<th class="text-center">Data Pedido</th>
+							<th>Cliente</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="devolucao in listaDevolucao">
+							<td class="text-center">{{devolucao.numPedido}}</td>
+							<td>{{devolucao.descProduto}}</td>
+							<td>{{devolucao.valorProduto | currency:"R$"}}</td>
+							<td class="text-center">{{devolucao.dataPedido}}</td>
+							<td>{{devolucao.nomeCliente}}</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="modal fade" id="modalDevolucao" tabindex="-1"
+				role="dialog" aria-labelledby="modalDevolucaoLabel"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<form name="devolucaoForm" ng-submit="enviarFormulario()"
+							method="post">
+							<div class="modal-header">
+								<h5 class="modal-title" id="modalDevolucaoLabel">{{tituloModal}}</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+
+							<div class="modal-body">
+								Número do pedido:<input class="form-control" type="number"
+									ng-model="numPedidoModal" ng-change="pesquisarpedidopornum()"
+									placeholder="Númerdo do pedido" /> <br> Produto:<input
+									class="form-control" type="text" name="pedido.descProduto"
+									ng-model="pedido.descProduto" placeholder="Produto" readonly />
+								Data do pedido:<input class="form-control" type="text"
+									name="pedido.dataPedido" ng-model="pedido.dataPedido"
+									placeholder="Data do pedido" readonly /> Motivo Devolução:
+								<textarea class="form-control" name="motivo"
+									ng-model="pedido.descMotivo"> </textarea>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Fechar</button>
+								<button type="submit" class="btn btn-primary">{{acao}}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
