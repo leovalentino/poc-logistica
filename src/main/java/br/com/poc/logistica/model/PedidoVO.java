@@ -1,22 +1,47 @@
 package br.com.poc.logistica.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class DevolucaoVO {
+public class PedidoVO implements Serializable {
+
+	private static final long serialVersionUID = -8513257513365284521L;
+
+	private Integer numPedido;
+	private String dataPedido;
+	private BigDecimal valorPedido;
 
 	private Integer idCliente;
 	private String nomeCliente;
 	private String cpfCnpj;
 
-	private Integer idDevolucao;
-	private String dataDevolucao;
 	private Integer idProduto;
 	private BigDecimal valorProduto;
 	private String descProduto;
-	private Integer numPedido;
-	private String dataPedido;
-	private BigDecimal valorPedido;
-	private String descMotivo;
+
+	public Integer getNumPedido() {
+		return numPedido;
+	}
+
+	public void setNumPedido(Integer numPedido) {
+		this.numPedido = numPedido;
+	}
+
+	public String getDataPedido() {
+		return dataPedido;
+	}
+
+	public void setDataPedido(String dataPedido) {
+		this.dataPedido = dataPedido;
+	}
+
+	public String getDescProduto() {
+		return descProduto;
+	}
+
+	public void setDescProduto(String descProduto) {
+		this.descProduto = descProduto;
+	}
 
 	public Integer getIdCliente() {
 		return idCliente;
@@ -42,22 +67,6 @@ public class DevolucaoVO {
 		this.cpfCnpj = cpfCnpj;
 	}
 
-	public Integer getIdDevolucao() {
-		return idDevolucao;
-	}
-
-	public void setIdDevolucao(Integer idDevolucao) {
-		this.idDevolucao = idDevolucao;
-	}
-
-	public String getDataDevolucao() {
-		return dataDevolucao;
-	}
-
-	public void setDataDevolucao(String dataDevolucao) {
-		this.dataDevolucao = dataDevolucao;
-	}
-
 	public Integer getIdProduto() {
 		return idProduto;
 	}
@@ -74,44 +83,12 @@ public class DevolucaoVO {
 		this.valorProduto = valorProduto;
 	}
 
-	public String getDescProduto() {
-		return descProduto;
-	}
-
-	public void setDescProduto(String descProduto) {
-		this.descProduto = descProduto;
-	}
-
-	public Integer getNumPedido() {
-		return numPedido;
-	}
-
-	public void setNumPedido(Integer numPedido) {
-		this.numPedido = numPedido;
-	}
-
-	public String getDataPedido() {
-		return dataPedido;
-	}
-
-	public void setDataPedido(String dataPedido) {
-		this.dataPedido = dataPedido;
-	}
-
 	public BigDecimal getValorPedido() {
 		return valorPedido;
 	}
 
 	public void setValorPedido(BigDecimal valorPedido) {
 		this.valorPedido = valorPedido;
-	}
-
-	public String getDescMotivo() {
-		return descMotivo;
-	}
-
-	public void setDescMotivo(String descMotivo) {
-		this.descMotivo = descMotivo;
 	}
 
 }

@@ -6,8 +6,6 @@
 
     <persistence-unit name="PocLogisticaPU" transaction-type="JTA">
 		 <jta-data-source>java:/POCDS</jta-data-source>
-		 <class>br.com.poc.logistica.model.Tarifa</class>
-		 <class>br.com.poc.logistica.model.Usuario</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" /> <!-- DB Driver -->
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/poc-logistica-db" /> <!-- BD Mane -->

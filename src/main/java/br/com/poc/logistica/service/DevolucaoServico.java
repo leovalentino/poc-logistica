@@ -8,6 +8,7 @@ import javax.ejb.Local;
 
 import br.com.poc.logistica.model.Devolucao;
 import br.com.poc.logistica.model.DevolucaoVO;
+import br.com.poc.logistica.model.PedidoVO;
 
 @Local
 public interface DevolucaoServico {
@@ -20,5 +21,7 @@ public interface DevolucaoServico {
 	void alterar(Devolucao tarifa);
 
 	void excluir(Integer idDevolucao);
+
+	PedidoVO pesquisarPedidoPorNum(Integer numPedido);
 	
 }
