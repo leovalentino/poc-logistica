@@ -13,7 +13,7 @@ public interface EntregaServico {
 
 	List<Entrega> pesquisarEntregas(GerenciarEntregaVo vo);
 
-	List<Entrega> pesquisarEntregas(Integer numPedido, Integer nomeTranportadora, Date datePedido, String descProduto,
+	List<Entrega> pesquisarEntregas(Integer numPedido, String nomeTranportadora, Date datePedido, String descProduto,
 			String descSituacaoEntrega, String nomeCliente);
 
 }

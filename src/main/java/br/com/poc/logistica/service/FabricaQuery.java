@@ -50,4 +50,10 @@ public class FabricaQuery {
 		return jpql.toString();
 	}
 
+	public static String criarQueryListarTransportadora() {
+		StringBuilder jpql = new StringBuilder();
+		jpql.append("Select t from br.com.poc.logistica.model.Transportadora t ");
+		return jpql.toString();
+	}
+
 }

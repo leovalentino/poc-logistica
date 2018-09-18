@@ -4,23 +4,40 @@ app.controller('acompanhamentoEntrega', function($scope, $http) {
 	$scope.sucesso = false;
 	$scope.erro = false;
 
-	$scope.pesquisardevolucoes = function() {
+	$scope.pesquisarentregas = function() {
 		var url = "/sislogis/rest/entrega/pesquisarentregas";
 
  		var filtros = {
 
  			params: {
 	 			'numPedido' : $scope.numPedido == '' ? null : $scope.numPedido,
-	 			'nomeTransportadora' : $scope.nomeTransportadora == '' ? null : $scope.nomeTransportadora,
+	 			'nomeTransportadora' : $scope.transportadora == '' ? null : $scope.transportadora,
 	 			'dataPedido' : $scope.dataPedido == '' ? null : $scope.dataPedido,
 	 			'descProduto' : $scope.descProduto == '' ? null : $scope.descProduto,
-	 			'descSituacaoEntrega' : $scope.descSituacaoEntrega == '' ? null : $scope.descSituacaoEntrega,
+	 			'descSituacaoEntrega' : $scope.situacao  == '' ? null : $scope.situacao,
 	 			'nomeCliente' : $scope.nomeCliente == '' ? null : $scope.nomeCliente
  		    }
  		};
 
 		$http.get(url, filtros).then(function(response) {
-			var listaResultado = response.data;
+			$scope.listaEntrega = response.data;
 		});
 	}
+
+	$scope.listarsituacaoentrega = function() {
+		var url = "/sislogis/rest/entrega/listarsituacaoentrega";
+
+		$http.get(url).then(function(response) {
+			$scope.listaSituacaoEntrega = response.data;
+		});
+	};
+
+	$scope.listartransportadora = function() {
+		var url = "/sislogis/rest/entrega/listartransportadora";
+
+		$http.get(url).then(function(response) {
+			$scope.listaTransportadora = response.data;
+		});
+	};
+
 });

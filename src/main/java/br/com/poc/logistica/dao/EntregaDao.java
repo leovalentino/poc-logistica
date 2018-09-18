@@ -24,7 +24,7 @@ public class EntregaDao extends PocCrudDao<Entrega, Integer> {
 		return query.getResultList();
 	}
 
-	public List<Entrega> pesquisarEntregas(Integer numPedido, Integer nomeTransportadora, Date datePedido,
+	public List<Entrega> pesquisarEntregas(Integer numPedido, String nomeTransportadora, Date datePedido,
 			String descProduto, String descSituacaoEntrega, String nomeCliente) {
 		TypedQuery<Entrega> query = em.createQuery(FabricaQuery.criarQueryPesquisarEntrega(), Entrega.class);
 		query.setParameter("numPedido", numPedido);

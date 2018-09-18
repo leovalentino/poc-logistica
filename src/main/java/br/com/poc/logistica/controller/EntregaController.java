@@ -14,43 +14,53 @@ import org.apache.commons.lang3.StringUtils;
 
 import br.com.poc.logistica.model.Entrega;
 import br.com.poc.logistica.model.SituacaoEntrega;
+import br.com.poc.logistica.model.Transportadora;
 import br.com.poc.logistica.service.EntregaServico;
 import br.com.poc.logistica.service.SituacaoEntregaServico;
+import br.com.poc.logistica.service.TransportadoraServico;
 import br.com.poc.logistica.service.UtilDate;
 
 @Path("/entrega")
 public class EntregaController {
 
 	@EJB
-	private EntregaServico servico;
+	private EntregaServico entregaServico;
 	
 	@EJB
 	private SituacaoEntregaServico situacaoEntregaServico;
+	
+	@EJB
+	private TransportadoraServico transportadoraServico;
 
 	@GET
 	@Path("/pesquisarentregas")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Resposta pesquisarEntregas(@QueryParam("numPedido") Integer numPedido,
-										   @QueryParam("nomeTranportadora") Integer nomeTranportadora,
+	public List<Entrega> pesquisarEntregas(@QueryParam("numPedido") Integer numPedido,
+										   @QueryParam("nomeTransportadora") String nomeTransportadora,
 										   @QueryParam("dataPedido") String dataPedido,
 										   @QueryParam("descProduto") String descProduto,
 										   @QueryParam("descSituacaoEntrega") String descSituacaoEntrega,
 										   @QueryParam("nomeCliente") String nomeCliente) {
-		Resposta resposta = new Resposta();
 		
 		Date datePedido = converterDataPedidoParaDate(dataPedido);
-		List<Entrega> listaEntregas = servico.pesquisarEntregas(numPedido, nomeTranportadora, datePedido,
+		return entregaServico.pesquisarEntregas(numPedido, nomeTransportadora, datePedido,
 										 descProduto, descSituacaoEntrega, nomeCliente);
-		
-		List<SituacaoEntrega> listaSituacao = situacaoEntregaServico.listarSituacaoEntrega();
-		
-		resposta.addListaObjeto(listaEntregas);
-		resposta.addListaObjeto(listaSituacao);
-		
-		return resposta;
 	}
 
-
+	@GET
+	@Path("/listarsituacaoentrega")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<SituacaoEntrega> listarSituacaoEntrega() {
+		return situacaoEntregaServico.listarSituacaoEntrega();
+	}
+	
+	@GET
+	@Path("/listartransportadora")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Transportadora> listarTransportadora() {
+		return transportadoraServico.listarTranportadora();
+	}
+	
 	private Date converterDataPedidoParaDate(String dataPedido) {
 		return StringUtils.isEmpty(dataPedido) ? null : UtilDate.getStringToDate(dataPedido, UtilDate.FORMATO_DD_MM_YYYY);
 	}

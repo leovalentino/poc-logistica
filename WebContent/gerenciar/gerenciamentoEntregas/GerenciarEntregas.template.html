@@ -33,7 +33,7 @@
 </nav>
 
 <div ng-app="GerenciarEntregas.module">
-  <div ng-controller="acompanhamentoEntrega" data-ng-init="pesquisardevolucoes()">
+  <div ng-controller="acompanhamentoEntrega" data-ng-init="pesquisarentregas(); listarsituacaoentrega(); listartransportadora()">
 	<div class = "col-sm-9  col-md-offset-2">
 	<h1>Gerenciamento de Entregas</h1>
 	<div class="panel panel-default">
@@ -43,21 +43,23 @@
 				  	<div class="form-group">
 					    <div class="col-md-4 mb-3">
 					      <label for="pedido">Número do pedido</label>
-					      <input type="number" ng-model="numPedido" ng-change="pesquisardevolucoes()" class="form-control" placeholder="Número do pedido">
+					      <input type="number" ng-model="numPedido" ng-change="pesquisarentregas()" class="form-control" placeholder="Número do pedido">
 					     </div>
 				    </div>
 
 				    <div class="form-group">
 					    <div class="col-md-4 mb-3">
 					      <label for="transportadora">Transportadora</label>
-					      <select ng-model="nomeTransportadora" class="form-control" ng-change="pesquisardevolucoes()" placeholder="Transportadora"></select>
+					      <select ng-options="transportadora.nomeTransportadora as transportadora.nomeTransportadora for transportadora in listaTransportadora" ng-model="transportadora" class="form-control"  ng-change="pesquisarentregas()">
+					      	<option value="">SELECIONE</option>
+					      </select>
 					    </div>
 				    </div>
 
 				    <div class="form-group">
 					    <div class="col-md-4 mb-3">
 					     <label for="etapa">Data do pedido</label>
-					      <input type="date" ng-model="dataPedido" class="form-control" ng-change="pesquisardevolucoes()">
+					      <input type="date" ng-model="dataPedido" class="form-control" ng-change="pesquisarentregas()">
 					    </div>
 					</div>
 
@@ -66,15 +68,15 @@
 				      <div class="form-group">
 					    <div class="col-md-5 mb-3">
 					      <label for="produto">Produto</label>
-					      <input type="text" class="form-control" ng-model="descProduto" placeholder="Produto" ng-change="pesquisardevolucoes()">
+					      <input type="text" class="form-control" ng-model="descProduto" placeholder="Produto" ng-change="pesquisarentregas()">
 				        </div>
 				    </div>
 
 				    <div class="form-group">
 					    <div class="col-md-3 mb-3">
 					      <label for="situacao">Situação</label>
-					      <select class="form-control" ng-model="descSituacao" ng-options="" ng-change="pesquisardevolucoes()">
-					      	<option ng-repeat="situacao in listaSituacao"></option>
+					      <select class="form-control" ng-model="situacao" ng-options="situacao.descSituacaoEntrega as situacao.descSituacaoEntrega for situacao in listaSituacaoEntrega" ng-change="pesquisarentregas()">
+					      	<option value="">SELECIONE</option>
 					      </select>
 					    </div>
 				    </div>
@@ -82,7 +84,7 @@
 				    <div class="form-group">
 				    <div class="col-md-4 ">
 				      <label for="cliente">Cliente</label>
-				      <input class="form-control" ng-model="nomeCliente" placeholder="Cliente" ng-change="pesquisardevolucoes()">
+				      <input class="form-control" ng-model="nomeCliente" placeholder="Cliente" ng-change="pesquisarentregas()">
 				    </div>  
 				    </div>
 				  </div>

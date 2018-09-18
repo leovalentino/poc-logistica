@@ -22,7 +22,7 @@ public class EntregaServicoEJB implements EntregaServico {
 	}
 
 	@Override
-	public List<Entrega> pesquisarEntregas(Integer numPedido, Integer nomeTranportadora, Date datePedido,
+	public List<Entrega> pesquisarEntregas(Integer numPedido, String nomeTranportadora, Date datePedido,
 			String descProduto, String descSituacaoEntrega, String nomeCliente) {
 		return dao.pesquisarEntregas(numPedido, nomeTranportadora, datePedido,
 								     descProduto, descSituacaoEntrega, nomeCliente);
