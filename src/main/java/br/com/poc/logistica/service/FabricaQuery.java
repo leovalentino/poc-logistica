@@ -44,4 +44,10 @@ public class FabricaQuery {
 		return jpql.toString();
 	}
 
+	public static String criarQueryListarSituacaoEntrega() {
+		StringBuilder jpql = new StringBuilder();
+		jpql.append("Select s from br.com.poc.logistica.model.SituacaoEntrega s ");
+		return jpql.toString();
+	}
+
 }

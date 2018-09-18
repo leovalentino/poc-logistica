@@ -18,7 +18,7 @@
       <a class="navbar-brand" href="#">SISLOGIS</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
+      <li class="active"><a href="../../login.html">SAIR</a></li>
        <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">GERENCIAR
         <span class="caret"></span></a>
@@ -41,38 +41,49 @@
 			<form class="needs-validation" novalidate>
 				  <div class="form-row">
 				  	<div class="form-group">
-				    <div class="col-md-4 mb-3">
-				      <label for="pedido">Número do pedido</label>
-				      <input type="number" ng-model="numPedido" ng-change="pesquisardevolucoes()" class="form-control" placeholder="Número do pedido">
-				     </div>
+					    <div class="col-md-4 mb-3">
+					      <label for="pedido">Número do pedido</label>
+					      <input type="number" ng-model="numPedido" ng-change="pesquisardevolucoes()" class="form-control" placeholder="Número do pedido">
+					     </div>
 				    </div>
 
-				    <div class="col-md-4 mb-3">
-				      <label for="transportadora">Transportadora</label>
-				      <input type="text" ng-model="nomeTransportadora" class="form-control" ng-change="pesquisardevolucoes()" placeholder="Transportadora">
-				      
+				    <div class="form-group">
+					    <div class="col-md-4 mb-3">
+					      <label for="transportadora">Transportadora</label>
+					      <select ng-model="nomeTransportadora" class="form-control" ng-change="pesquisardevolucoes()" placeholder="Transportadora"></select>
+					    </div>
 				    </div>
-				    <div class="col-md-4 mb-3">
-				     <label for="etapa">Data do pedido</label>
-				      <input type="date" ng-model="dataPedido" class="form-control" ng-change="pesquisardevolucoes()">
-				    </div>
+
+				    <div class="form-group">
+					    <div class="col-md-4 mb-3">
+					     <label for="etapa">Data do pedido</label>
+					      <input type="date" ng-model="dataPedido" class="form-control" ng-change="pesquisardevolucoes()">
+					    </div>
+					</div>
 
 				  </div>
 				  <div class="form-row">
-				    <div class="col-md-6 mb-3">
-				      <label for="produto">Produto</label>
-				      <input type="text" class="form-control" ng-model="descProduto" placeholder="Produto" ng-change="pesquisardevolucoes()">
-				     
+				      <div class="form-group">
+					    <div class="col-md-5 mb-3">
+					      <label for="produto">Produto</label>
+					      <input type="text" class="form-control" ng-model="descProduto" placeholder="Produto" ng-change="pesquisardevolucoes()">
+				        </div>
 				    </div>
-				    <div class="col-md-3 mb-3">
-				      <label for="validationCustom04">Situação</label>
-				      <input type="text" class="form-control" ng-model="descSituacao" placeholder="Situação" ng-change="pesquisardevolucoes()">
-				     
+
+				    <div class="form-group">
+					    <div class="col-md-3 mb-3">
+					      <label for="situacao">Situação</label>
+					      <select class="form-control" ng-model="descSituacao" ng-options="" ng-change="pesquisardevolucoes()">
+					      	<option ng-repeat="situacao in listaSituacao"></option>
+					      </select>
+					    </div>
 				    </div>
-				    <div class="col-md-3 mb-3">
-				      <label for="validationCustom05">Cliente</label>
-				      <input type="text" class="form-control" ng-model="nomeCliente" placeholder="Cliente" ng-change="pesquisardevolucoes()">
-				      
+
+				    <div class="form-group">
+				    <div class="col-md-4 ">
+				      <label for="cliente">Cliente</label>
+				      <input class="form-control" ng-model="nomeCliente" placeholder="Cliente" ng-change="pesquisardevolucoes()">
+				    </div>  
 				    </div>
 				  </div>
 		</form>
