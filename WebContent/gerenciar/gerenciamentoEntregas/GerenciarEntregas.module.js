@@ -20,7 +20,7 @@ app.controller('acompanhamentoEntrega', function($scope, $http) {
  		};
 
 		$http.get(url, filtros).then(function(response) {
-			$scope.listaEntrega = response.data;
+			var listaResultado = response.data;
 		});
 	}
 });

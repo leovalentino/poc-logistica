@@ -13,18 +13,25 @@
 
 <body ng-app="loginApp">
 
-<div class = "col-sm-4  col-md-offset-4" ng-app="loginModule">
+<div class = "col-sm-3  col-md-offset-4" ng-app="loginModule">
 	<h1>SISLOGIS</h1>
 	
 	<div ng-controller = "loginController">
 		<div class="form-group" ng-submit="pesquisartarifas()">
-			<form>
-				Login:<input class="form-control" type="text" ng-model="descTarifa" placeholder="Login"/> <br>
-				Senha:<input class="form-control" type="password" ng-model="valorTarifa" placeholder="Senha"/>
-			</form>
-			<div align="rigth">
-				<button ng-click="logar()" class="btn btn-primary">Logar</button>
-				<button type="button" class="btn btn-success" ng-click="incluirtarifa()">Limpar</button>
-			</div>
-		</div>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<form>
+						<div class="form-group">
+							Login:<input class="form-control" type="text" ng-model="descTarifa" placeholder="Login"/> 
+						</div>
+						<div class="form-group">
+						    Senha:<input class="form-control" type="password" ng-model="valorTarifa" placeholder="Senha"/>
+					    </div>
+						<button ng-click="logar()" class="btn btn-primary btn-block">Logar</button>
+					</form>
+			    </div>
+		    </div>
+	   </div>
+    </div>
+</div>
 </body>
