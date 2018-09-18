@@ -32,7 +32,7 @@ public class EntregaDao extends PocCrudDao<Entrega, Integer> {
 		query.setParameter("datePedido", datePedido);
 		query.setParameter("descProduto", descProduto);
 		query.setParameter("descSituacaoEntrega", descSituacaoEntrega);
-		query.setParameter("nomeCliente", nomeCliente);
+		query.setParameter("nomeCliente", "%" + FabricaQuery.tratarParametroLike(nomeCliente) + "%");
 		
 		return query.getResultList();
 	}

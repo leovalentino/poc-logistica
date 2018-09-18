@@ -12,8 +12,8 @@ public class FabricaQuery {
 		return jpql.toString();
 	}
 
-	public static String tratarParametroLike(String descTarifa) {
-		return StringUtils.isEmpty(descTarifa) ? "" : descTarifa.toUpperCase();
+	public static String tratarParametroLike(String valor) {
+		return StringUtils.isEmpty(valor) ? "" : valor.toUpperCase();
 	}
 	
 	public static String criarQueryPesquisarDevolucao() {
@@ -40,7 +40,7 @@ public class FabricaQuery {
 		jpql.append("and ( CAST(:datePedido AS date) is null or e.pedido.dataPedido = :datePedido) ");
 		jpql.append("and (:descProduto is null or e.pedido.produto.descProduto = :descProduto) ");
 		jpql.append("and (:descSituacaoEntrega is null or e.situacaoEntrega.descSituacaoEntrega = :descSituacaoEntrega) ");
-		jpql.append("and (:nomeCliente is null or e.pedido.cliente.nomeCliente = :nomeCliente) ");
+		jpql.append("and (:nomeCliente is null or upper(e.pedido.cliente.nomeCliente) like :nomeCliente) ");
 		return jpql.toString();
 	}
 
