@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class UtilDate {
 
 	public static final String FORMATO_DD_MM_YYYY = "dd/MM/yyyy";
@@ -25,6 +27,10 @@ public class UtilDate {
 			Logger.getLogger("Erro ao converter String para Date");
 		}
 		return null;
+	}
+
+	public static Date converterDataAngularParaJava(String dataPedido) {
+		return StringUtils.isEmpty(dataPedido) ? null : getStringToDate(dataPedido, "yyyy-MM-dd'T'HH:mm:ss.SSSX");
 	}
 		
 }

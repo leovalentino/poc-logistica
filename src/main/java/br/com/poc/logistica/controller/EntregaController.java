@@ -10,8 +10,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import org.apache.commons.lang3.StringUtils;
-
 import br.com.poc.logistica.model.Entrega;
 import br.com.poc.logistica.model.SituacaoEntrega;
 import br.com.poc.logistica.model.Transportadora;
@@ -42,7 +40,7 @@ public class EntregaController {
 										   @QueryParam("descSituacaoEntrega") String descSituacaoEntrega,
 										   @QueryParam("nomeCliente") String nomeCliente) {
 		
-		Date datePedido = converterDataPedidoParaDate(dataPedido);
+		Date datePedido = UtilDate.converterDataAngularParaJava(dataPedido);
 		return entregaServico.pesquisarEntregas(numPedido, nomeTransportadora, datePedido,
 										 descProduto, descSituacaoEntrega, nomeCliente);
 	}
@@ -59,10 +57,6 @@ public class EntregaController {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Transportadora> listarTransportadora() {
 		return transportadoraServico.listarTranportadora();
-	}
-	
-	private Date converterDataPedidoParaDate(String dataPedido) {
-		return StringUtils.isEmpty(dataPedido) ? null : UtilDate.getStringToDate(dataPedido, UtilDate.FORMATO_DD_MM_YYYY);
 	}
 	
 }

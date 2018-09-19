@@ -16,10 +16,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.commons.lang3.StringUtils;
+
 import br.com.poc.logistica.model.Devolucao;
 import br.com.poc.logistica.model.DevolucaoVO;
 import br.com.poc.logistica.model.PedidoVO;
 import br.com.poc.logistica.service.DevolucaoServico;
+import br.com.poc.logistica.service.UtilDate;
 import br.com.poc.logistica.util.Conversor;
 
 @Path("/devolucao")
@@ -33,9 +36,10 @@ public class DevolucaoController {
 	@Path("/pesquisardevolucoes")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<DevolucaoVO> pesquisarDevolucao(@QueryParam("numPedido") Integer numPedido, 
-											    @QueryParam("dataDevolucao") Date dataDevolucao,
+											    @QueryParam("dataPedido") String dataPedido,
 											    @QueryParam("valorPedido") BigDecimal valorPedido) {
-		return servico.pesquisarDevolucao(numPedido, dataDevolucao, valorPedido);
+		Date datePedido = UtilDate.converterDataAngularParaJava(dataPedido);
+		return servico.pesquisarDevolucao(numPedido, datePedido, valorPedido);
     }
 	
 	@POST
