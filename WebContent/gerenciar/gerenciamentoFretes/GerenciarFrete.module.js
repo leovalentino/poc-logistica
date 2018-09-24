@@ -1,4 +1,4 @@
-var app = angular.module('GerenciarFrete.module', []);
+var app = angular.module('GerenciarFrete.module', ['angularUtils.directives.dirPagination']);
 
 app.filter('pesquisartarifas', function() {
 	
@@ -125,6 +125,11 @@ app.controller('crudtarifa', function($scope, $http) {
 		var modal_popup = angular.element( document.querySelector('#modalSimulacao'));
 		modal_popup.modal('show');
 	};
+
+	$scope.sort = function(keyname){
+        $scope.sortKey = keyname;   //set the sortKey to the param passed
+        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+    }
 
 });
 

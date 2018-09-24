@@ -10,6 +10,7 @@
 <script type="text/javascript"
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="GerenciarFrete.module.js"></script>
+<script type='text/javascript' src="../lib/js/dirPagination.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -81,15 +82,21 @@
 				<table ng-table="tableParams" class="table table-striped" show-filter="true">
 					<thead class="thead-light">
 						<tr>
-							<th class="text-center">Id Tarifa</th>
-							<th class="text-center">Descrição</th>
-							<th class="text-center">Valor</th>
+							<th class="text-center" ng-click="sort('idTarifa')">Id Tarifa
+								<span class="glyphicon sort-icon" ng-show="sortKey=='idTarifa'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+							</th>
+							<th class="text-center" ng-click="sort('descTarifa')">Descrição
+								<span class="glyphicon sort-icon" ng-show="sortKey=='descTarifa'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}">
+							</th>
+							<th class="text-center" ng-click="sort('valorTarifa')">Valor
+								<span class="glyphicon sort-icon" ng-show="sortKey=='valorTarifa'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}">
+							</th>
 							<th class="text-center">Alterar</th>
 							<th class="text-center">Excluir</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="tarifa in listaTarifa">
+						<tr dir-paginate="tarifa in listaTarifa|orderBy:sortKey:reverse|itemsPerPage:5">
 							<td class="text-center">{{tarifa.idTarifa}}</td>
 							<td class="text-center">{{tarifa.descTarifa}}</td>
 							<td class="text-center">{{tarifa.valorTarifa |
@@ -102,6 +109,11 @@
 						</tr>
 					</tbody>
 				</table>
+				<dir-pagination-controls
+			       max-size="5"
+			       direction-links="true"
+			       boundary-links="true" >
+			    </dir-pagination-controls>
 			</div>
 
 			<div class="modal fade" id="modalTarifa" tabindex="-1" role="dialog"
@@ -150,7 +162,7 @@
 
 							<div class="modal-body">
 								<label for="situacao">Situação</label>
-							      <select class="form-control" ng-model="situacao" ng-options="tarifa.descTarifa as tarifa.descTarifa for tarifa in listaTarifa">
+							      <select class="form-control" ng-model="situacao" ng-options="tarifa.descTarifa as tarifa.descTarifa for situacao in listaTarifa">
 							      	<option value="">SELECIONE</option>
 							      </select>
 
