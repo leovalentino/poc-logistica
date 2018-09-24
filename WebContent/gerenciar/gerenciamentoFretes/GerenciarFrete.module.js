@@ -35,8 +35,8 @@ app.controller('crudtarifa', function($scope, $http) {
 		if ($scope.acao == 'Incluir') {
 			var url = "/sislogis/rest/tarifa/incluirtarifa";
 			$http.post(url, dados).then(function(response) {
-				$scope.mensagemSucesso = "Dados inseridos com sucesso.";
 				$scope.sucesso = true;
+				$scope.mensagemSucesso = "Dados inseridos com sucesso.";
 				$scope.fecharModal();
 				$scope.descTarifaModal = "";
 				$scope.valorTarifaModal = "";
@@ -45,8 +45,8 @@ app.controller('crudtarifa', function($scope, $http) {
 	    } else {
 	    	var url = "/sislogis/rest/tarifa/alterartarifa";
 	    	$http.put(url, dados).then(function(response) {
+	    		$scope.sucesso = true;
 				$scope.mensagemSucesso = "Dados alterados com sucesso.";
-				$scope.sucesso = true;
 				$scope.fecharModal();
 				$scope.descTarifaModal = "";
 				$scope.valorTarifaModal = "";

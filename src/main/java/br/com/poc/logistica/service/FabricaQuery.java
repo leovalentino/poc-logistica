@@ -9,6 +9,7 @@ public class FabricaQuery {
 		jpql.append("Select t from br.com.poc.logistica.model.Tarifa t ");
 		jpql.append("where (:descTarifa is null or t.descTarifa like :descTarifa) ");
 		jpql.append("and (:valorTarifa is null or t.valorTarifa > :valorTarifa) ");
+		jpql.append("order by t.idTarifa ");
 		return jpql.toString();
 	}
 

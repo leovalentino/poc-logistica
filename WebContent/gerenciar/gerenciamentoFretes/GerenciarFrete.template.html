@@ -13,8 +13,8 @@
 <script type='text/javascript' src="../lib/js/dirPagination.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet"	href="../lib/css/app.css">
 </head>
 
 <body>
@@ -46,7 +46,7 @@
 		<div ng-controller="crudtarifa" data-ng-init="pesquisartarifas()">
 			<div class="col-sm-4  col-md-offset-4">
 				<h1>Controle de Tarifas</h1>
-				<div class="alert alert-success alert-dismissible" ng-show="sucesso">
+				<div class="alert alert-success alert-dismissible" ng-show="sucesso" role="alert">
 					<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 					{{mensagemSucesso}}
 				</div>
