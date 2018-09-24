@@ -99,6 +99,33 @@ app.controller('crudtarifa', function($scope, $http) {
 		var modal_popup = angular.element( document.querySelector('#modalTarifa'));
 		modal_popup.modal('show');
 	};
+
+
+	$scope.simularTarifa = function() {
+
+	};
+
+	$scope.listartarifas = function() {
+		var url = "/sislogis/rest/tarifa/listartarifa";
+
+		$http.get(url).then(function(response) {
+			$scope.listaTarifa = response.data;
+		});
+
+		$scope.openModalSimulacao();
+	};
+
+
+	$scope.fecharModalSimulacao = function() {
+		var modal_popup = angular.element( document.querySelector('#modalSimulacao'));
+		modal_popup.modal('hide');
+	};
+
+	$scope.openModalSimulacao = function() {
+		var modal_popup = angular.element( document.querySelector('#modalSimulacao'));
+		modal_popup.modal('show');
+	};
+
 });
 
 
