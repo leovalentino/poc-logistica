@@ -8,7 +8,10 @@ public class FabricaQuery {
 		StringBuilder jpql = new StringBuilder();
 		jpql.append("Select t from br.com.poc.logistica.model.Tarifa t ");
 		jpql.append("where (:descTarifa is null or t.descTarifa like :descTarifa) ");
-		jpql.append("and (:valorTarifa is null or t.valorTarifa > :valorTarifa) ");
+		jpql.append("and ((:valorMinTarifa is null) and (:valorMaxTarifa is null) ");
+		jpql.append("or (t.valorTarifa >= :valorMinTarifa and t.valorTarifa <= :valorMaxTarifa)) ");
+		jpql.append("or (t.valorTarifa >= :valorMinTarifa and :valorMaxTarifa is null)) ");
+		jpql.append("or (:valorMinTarifa is null and t.valorTarifa <= :valorMaxTarifa)) ");
 		jpql.append("order by t.idTarifa ");
 		return jpql.toString();
 	}

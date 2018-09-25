@@ -8,7 +8,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import br.com.poc.logistica.model.Usuario;
-import br.com.poc.logistica.service.UsuarioServico;
+import br.com.poc.logistica.service.interfaces.UsuarioServico;
 
 @Path("/usuario")
 public class UsuarioController {

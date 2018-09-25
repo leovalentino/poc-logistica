@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import br.com.poc.logistica.controller.GerenciarEntregaVo;
 import br.com.poc.logistica.dao.EntregaDao;
 import br.com.poc.logistica.model.Entrega;
+import br.com.poc.logistica.service.interfaces.EntregaServico;
 
 @Stateless
 public class EntregaServicoEJB implements EntregaServico {

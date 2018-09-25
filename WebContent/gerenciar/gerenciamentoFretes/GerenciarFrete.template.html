@@ -60,19 +60,26 @@
 							</div>
 							<div class="form-group col-md-6">
 								<label for="valorTarifa">Valor Tarifa:</label> <input
-									class="form-control" type="number" ng-model="valorTarifa"
-									placeholder="Valor Tarifa" ng-change="pesquisartarifas()" />
+									class="form-control" type="number" ng-model="valorMinTarifa"
+									placeholder="Valor Min" ng-change="pesquisartarifas()" />
 							</div>
-								<div class="form-group">
-									<div class="form-group col-md-6">
-										<button type="button" class="btn btn-success btn-block"
-											ng-click="incluirtarifa()">Incluir</button>
-									</div>
-									<div class="form-group col-md-6">
-										<button type="button" class="btn btn-success btn-block"
-											ng-click="listartarifas()">Simular</button>
-									</div>
+							<div class="form-group col-md-6">
+								
+							</div>
+							<div class="form-group col-md-6">
+								<input class="form-control" type="number" ng-model="valorMaxTarifa"
+									   placeholder="Valor Max" ng-change="pesquisartarifas()" />
+							</div>
+							<div class="form-group">
+								<div class="form-group col-md-6">
+									<button type="button" class="btn btn-success btn-block"
+										ng-click="incluirtarifa()">Incluir</button>
 								</div>
+								<div class="form-group col-md-6">
+									<button type="button" class="btn btn-success btn-block"
+										ng-click="listartarifas()">Simular</button>
+								</div>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -161,13 +168,26 @@
 							</div>
 
 							<div class="modal-body">
-								<label for="situacao">Situação</label>
-							      <select class="form-control" ng-model="situacao" ng-options="tarifa.descTarifa as tarifa.descTarifa for situacao in listaTarifa">
-							      	<option value="">SELECIONE</option>
-							      </select>
+								<div class="form-group">
 
-								Valor Tarifa:<input class="form-control" type="number"
-									ng-model="valorTarifaModal" placeholder="Valor Tarifa" />
+								<label for="tarifa">Tarifa</label>
+								   <select class="form-control" ng-model="tarifa" ng-change="simularTarifa(tarifa)" ng-options="tarifa.valorTarifa as tarifa.descTarifa for tarifa in listaTarifa">
+								   	<option value="">SELECIONE</option>
+								   </select>
+							    </div>
+
+							    <div class="form-group">
+							    	<label for="valorCarga">Valor da Carga:</label>
+							    	<input class="form-control" type="number" ng-change="simularTarifa(tarifa)"
+									ng-model="valorCarga" placeholder="Valor da Carga" />
+							    </div>
+
+							    <div class="form-group">
+							    	<label for="valorCarga">Resultado:</label>
+							    	<input class="form-control" type="number"
+									ng-model="resultado" placeholder="Resultado" />
+							    </div>
+
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"

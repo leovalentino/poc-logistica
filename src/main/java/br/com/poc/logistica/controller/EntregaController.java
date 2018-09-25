@@ -13,10 +13,10 @@ import javax.ws.rs.core.MediaType;
 import br.com.poc.logistica.model.Entrega;
 import br.com.poc.logistica.model.SituacaoEntrega;
 import br.com.poc.logistica.model.Transportadora;
-import br.com.poc.logistica.service.EntregaServico;
-import br.com.poc.logistica.service.SituacaoEntregaServico;
-import br.com.poc.logistica.service.TransportadoraServico;
-import br.com.poc.logistica.service.UtilDate;
+import br.com.poc.logistica.service.interfaces.EntregaServico;
+import br.com.poc.logistica.service.interfaces.SituacaoEntregaServico;
+import br.com.poc.logistica.service.interfaces.TransportadoraServico;
+import br.com.poc.logistica.util.UtilDate;
 
 @Path("/entrega")
 public class EntregaController {

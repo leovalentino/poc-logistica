@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 
 import br.com.poc.logistica.dao.TarifaDao;
 import br.com.poc.logistica.model.Tarifa;
+import br.com.poc.logistica.service.interfaces.TarifaServico;
 
 @Stateless
 public class TarifaServicoEJB implements TarifaServico {
@@ -16,8 +17,8 @@ public class TarifaServicoEJB implements TarifaServico {
 	private TarifaDao dao;
 	
 	@Override
-	public List<Tarifa> pesquisarTarifa(String descTarifa, BigDecimal valorTarifa) {
-		return dao.pesquisarTarifa(descTarifa, valorTarifa);
+	public List<Tarifa> pesquisarTarifa(String descTarifa, BigDecimal valorMinTarifa, BigDecimal valorMaxTarifa) {
+		return dao.pesquisarTarifa(descTarifa, valorMinTarifa, valorMaxTarifa);
 	}
 	
 	@Override
@@ -33,6 +34,11 @@ public class TarifaServicoEJB implements TarifaServico {
 	@Override
 	public void excluir(Integer idTarifa) {
 		dao.excluir(idTarifa);
+	}
+	
+	@Override
+	public List<Tarifa> listarTarifas() {
+		return dao.buscarTodos();
 	}
 	
 }

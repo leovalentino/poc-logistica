@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 
 import br.com.poc.logistica.dao.TransportadoraDao;
 import br.com.poc.logistica.model.Transportadora;
+import br.com.poc.logistica.service.interfaces.TransportadoraServico;
 
 @Stateless
 public class TransportadoraServicoEJB implements TransportadoraServico {

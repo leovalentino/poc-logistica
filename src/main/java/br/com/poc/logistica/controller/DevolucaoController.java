@@ -16,21 +16,18 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import org.apache.commons.lang3.StringUtils;
-
 import br.com.poc.logistica.model.Devolucao;
 import br.com.poc.logistica.model.DevolucaoVO;
 import br.com.poc.logistica.model.PedidoVO;
-import br.com.poc.logistica.service.DevolucaoServico;
-import br.com.poc.logistica.service.UtilDate;
+import br.com.poc.logistica.service.interfaces.DevolucaoServico;
 import br.com.poc.logistica.util.Conversor;
+import br.com.poc.logistica.util.UtilDate;
 
 @Path("/devolucao")
 public class DevolucaoController {
 
 	@EJB
 	private DevolucaoServico servico;
-	
 	
 	@GET
 	@Path("/pesquisardevolucoes")

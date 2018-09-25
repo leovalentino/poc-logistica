@@ -10,7 +10,6 @@ import br.com.poc.logistica.model.DevolucaoVO;
 import br.com.poc.logistica.model.Pedido;
 import br.com.poc.logistica.model.PedidoVO;
 import br.com.poc.logistica.model.Produto;
-import br.com.poc.logistica.service.UtilDate;
 
 public class Conversor {
 

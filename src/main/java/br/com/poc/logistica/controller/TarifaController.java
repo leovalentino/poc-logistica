@@ -16,7 +16,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import br.com.poc.logistica.model.Tarifa;
-import br.com.poc.logistica.service.TarifaServico;
+import br.com.poc.logistica.service.interfaces.TarifaServico;
 
 @Path("/tarifa")
 public class TarifaController {
@@ -28,9 +28,17 @@ public class TarifaController {
 	@Path("/pesquisartarifas")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Tarifa> pesquisarTarifa(@QueryParam("descTarifa") String descTarifa,
-										@QueryParam("valorTarifa") BigDecimal valorTarifa) {
-		return servico.pesquisarTarifa(descTarifa, valorTarifa);
+										@QueryParam("valorMinTarifa") BigDecimal valorMinTarifa,
+										@QueryParam("valorMaxTarifa") BigDecimal valorMaxTarifa) {
+		return servico.pesquisarTarifa(descTarifa, valorMinTarifa, valorMaxTarifa);
     }
+	
+	@GET
+	@Path("/listartarifa")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Tarifa> listarTarifas() {
+		return servico.listarTarifas();
+	}
 	
 	@POST
 	@Path("/incluirtarifa")

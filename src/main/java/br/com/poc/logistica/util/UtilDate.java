@@ -1,4 +1,4 @@
-package br.com.poc.logistica.service;
+package br.com.poc.logistica.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

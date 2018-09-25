@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import br.com.poc.logistica.service.UtilDate;
+import br.com.poc.logistica.util.UtilDate;
 
 @Entity
 @Table(name = "ENTREGA")

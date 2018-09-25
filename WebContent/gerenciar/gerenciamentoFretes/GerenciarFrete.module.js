@@ -15,7 +15,8 @@ app.controller('crudtarifa', function($scope, $http) {
 
  			params: {
 	 			'descTarifa' : $scope.descTarifa == '' ? null : $scope.descTarifa,
-	 			'valorTarifa' : $scope.valorTarifa == '' ? null : $scope.valorTarifa 
+	 			'valorMinTarifa' : $scope.valorMinTarifa == '' ? null : $scope.valorMinTarifa,
+	 			'valorMaxTarifa' : $scope.valorMaxTarifa == '' ? null : $scope.valorMaxTarifa 
  		    }
  		};
 
@@ -101,8 +102,8 @@ app.controller('crudtarifa', function($scope, $http) {
 	};
 
 
-	$scope.simularTarifa = function() {
-
+	$scope.simularTarifa = function(tarifa) {
+		$scope.resultado = tarifa * $scope.valorCarga;
 	};
 
 	$scope.listartarifas = function() {

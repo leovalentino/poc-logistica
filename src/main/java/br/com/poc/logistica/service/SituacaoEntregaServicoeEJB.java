@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 
 import br.com.poc.logistica.dao.SituacaoEntregaDao;
 import br.com.poc.logistica.model.SituacaoEntrega;
+import br.com.poc.logistica.service.interfaces.SituacaoEntregaServico;
 
 @Stateless
 public class SituacaoEntregaServicoeEJB implements SituacaoEntregaServico {

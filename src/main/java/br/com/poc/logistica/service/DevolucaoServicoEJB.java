@@ -13,6 +13,7 @@ import br.com.poc.logistica.model.Devolucao;
 import br.com.poc.logistica.model.DevolucaoVO;
 import br.com.poc.logistica.model.Pedido;
 import br.com.poc.logistica.model.PedidoVO;
+import br.com.poc.logistica.service.interfaces.DevolucaoServico;
 import br.com.poc.logistica.util.Conversor;
 
 @Stateless

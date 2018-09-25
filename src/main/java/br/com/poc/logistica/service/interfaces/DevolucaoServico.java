@@ -1,4 +1,4 @@
-package br.com.poc.logistica.service;
+package br.com.poc.logistica.service.interfaces;
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -16,10 +16,11 @@ public class TarifaDao extends PocCrudDao<Tarifa, Integer> {
 		super(Tarifa.class);
 	}
 
-	public List<Tarifa> pesquisarTarifa(String descTarifa, BigDecimal valorTarifa) {
+	public List<Tarifa> pesquisarTarifa(String descTarifa, BigDecimal valorMinTarifa, BigDecimal valorMaxTarifa) {
 		 TypedQuery<Tarifa> query = em.createQuery(FabricaQuery.criarQueryPesquisarTarifa(), Tarifa.class);
 		 query.setParameter("descTarifa", "%" + FabricaQuery.tratarParametroLike(descTarifa) + "%");
-		 query.setParameter("valorTarifa", valorTarifa);
+		 query.setParameter("valorMinTarifa", valorMinTarifa);
+		 query.setParameter("valorMaxTarifa", valorMaxTarifa);
 		 return query.getResultList();
 	}
 	
