@@ -1,4 +1,4 @@
-var app = angular.module('GerenciarEntregas.module', []);
+var app = angular.module('GerenciarEntregas.module', ['angularUtils.directives.dirPagination']);
  
 app.controller('acompanhamentoEntrega', function($scope, $http) {
 	$scope.sucesso = false;
@@ -38,6 +38,15 @@ app.controller('acompanhamentoEntrega', function($scope, $http) {
 		$http.get(url).then(function(response) {
 			$scope.listaTransportadora = response.data;
 		});
+	};
+
+	$scope.sort = function(keyname){
+        $scope.sortKey = keyname;   
+        $scope.reverse = !$scope.reverse; 
+    };
+
+    $scope.switchBool = function(value) {
+	   $scope[value] = !$scope[value];
 	};
 
 });

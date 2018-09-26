@@ -1,4 +1,4 @@
-var app = angular.module('GerenciarDevolucao.module', []);
+var app = angular.module('GerenciarDevolucao.module', ['angularUtils.directives.dirPagination']);
  
 app.controller('cruddevolucao', function($scope, $http) {
 	$scope.sucesso = false;
@@ -48,7 +48,7 @@ app.controller('cruddevolucao', function($scope, $http) {
 
 		var url = "/sislogis/rest/devolucao/incluirdevolucao";
 		$http.post(url, dados).then(function(response) {
-			$scope.mensagemSucesso = "Dados inseridos com sucesso.";
+			$scope.mensagemSucesso = "Devolução registrada com sucesso.";
 			$scope.sucesso = true;
 			$scope.fecharModal();
 			$scope.descDevolucaoModal = "";
@@ -74,6 +74,15 @@ app.controller('cruddevolucao', function($scope, $http) {
 	$scope.openModal = function() {
 		var modal_popup = angular.element( document.querySelector('#modalDevolucao'));
 		modal_popup.modal('show');
+	};
+
+	$scope.sort = function(keyname){
+        $scope.sortKey = keyname;   
+        $scope.reverse = !$scope.reverse; 
+    };
+
+    $scope.switchBool = function(value) {
+	   $scope[value] = !$scope[value];
 	};
 
 });

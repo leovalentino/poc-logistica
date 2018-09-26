@@ -3,17 +3,13 @@
 <title>Gerenciar Devolucao</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<script type='text/javascript'
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type='text/javascript'
-  src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
-<script type="text/javascript"
-  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type='text/javascript' src="GerenciarDevolucao.module.js"></script>
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="GerenciarDevolucao.module.js"></script>
+    <script type='text/javascript' src="../lib/js/dirPagination.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 </head>
 
 <body>
@@ -46,6 +42,10 @@
 			data-ng-init="pesquisardevolucoes()">
 			<div class="col-sm-6  col-md-offset-3">
 				<h1>Gerenciar Devoluções</h1>
+        <div class="alert alert-success" ng-show="sucesso">
+           <button type="button" class="close" data-ng-click="switchBool('sucesso')" >×</button>
+            {{mensagemSucesso}}
+         </div>
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<form>
@@ -80,15 +80,25 @@
 				<table class="table table-striped" class="table" show-filter="true">
 					<thead>
 						<tr>
-							<th class="text-center">Num Pedido</th>
-							<th>Produto</th>
-							<th>Valor</th>
-							<th class="text-center">Data Pedido</th>
-							<th>Cliente</th>
+							<th class="text-center" ng-click="sort('numPedido')">Num Pedido
+                <span class="glyphicon sort-icon" ng-show="sortKey=='numPedido'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+              </th>
+							<th ng-click="sort('descProduto')">Produto
+                <span class="glyphicon sort-icon" ng-show="sortKey=='descProduto'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+              </th>
+							<th ng-click="sort('valor')">Valor
+                <span class="glyphicon sort-icon" ng-show="sortKey=='valor'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+              </th>
+							<th class="text-center" ng-click="sort('dataPedido')">Data Pedido
+                <span class="glyphicon sort-icon" ng-show="sortKey=='dataPedido'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+              </th>
+							<th ng-click="sort('cliente')">Cliente
+                <span class="glyphicon sort-icon" ng-show="sortKey=='cliente'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+              </th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="devolucao in listaDevolucao">
+						<tr dir-paginate="devolucao in listaDevolucao|orderBy:sortKey:reverse|itemsPerPage:5">
 							<td class="text-center">{{devolucao.numPedido}}</td>
 							<td>{{devolucao.descProduto}}</td>
 							<td>{{devolucao.valorProduto | currency:"R$"}}</td>
@@ -98,6 +108,11 @@
 						</tr>
 					</tbody>
 				</table>
+          <dir-pagination-controls
+             max-size="5"
+             direction-links="true"
+             boundary-links="true" >
+          </dir-pagination-controls>
 			</div>
 
 			<div class="modal fade" id="modalDevolucao" tabindex="-1"

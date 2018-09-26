@@ -7,6 +7,7 @@
        	<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type='text/javascript' src="GerenciarEntregas.module.js"></script>
+		<script type='text/javascript' src="../lib/js/dirPagination.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 </head>
@@ -94,15 +95,25 @@
 	<table class="table table-striped">
 		<thead class="thead-light">
 			<tr>
-				<th class="text-center">Num Pedido</th>
-				<th class="text-center">Nome Tranportadora</th>
-				<th class="text-center">Data Prevista</th>
-				<th class="text-center">Situação</th>
-				<th class="text-center">Nome Cliente</th>
+				<th class="text-center" ng-click="sort('numPedido')">Num Pedido
+					<span class="glyphicon sort-icon" ng-show="sortKey=='numPedido'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('nomeTransportadora')">Nome Tranportadora
+					<span class="glyphicon sort-icon" ng-show="sortKey=='nomeTransportadora'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('dataEntregaPrevista')">Data Prevista
+					<span class="glyphicon sort-icon" ng-show="sortKey=='dataEntregaPrevista'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('situacaoEntrega')">Situação
+					<span class="glyphicon sort-icon" ng-show="sortKey=='situacaoEntrega'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('nomeCliente')">Nome Cliente
+					<span class="glyphicon sort-icon" ng-show="sortKey=='nomeCliente'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="entrega in listaEntrega">
+			<tr dir-paginate="entrega in listaEntrega|orderBy:sortKey:reverse|itemsPerPage:5">
 				<td class="text-center">{{entrega.pedido.idPedido}}</td>
 				<td>{{entrega.transportadora.nomeTransportadora}}</td>
 				<td class="text-center">{{entrega.dataEntregaPrevista}}</td>
@@ -111,6 +122,11 @@
 			</tr>
 		</tbody>
 	</table>
+	<dir-pagination-controls
+             max-size="5"
+             direction-links="true"
+             boundary-links="true" >
+          </dir-pagination-controls>
 	</div>
   </div>
  </div>
