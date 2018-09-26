@@ -13,4 +13,15 @@
         <servlet-name>br.com.poc.logistica.application.PocApplication</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+    
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>br.com.poc.logistica.filter.LoginFilter</filter-class>
+    </filter>
+    
+     <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/gerenciar/*</url-pattern>
+    </filter-mapping>
+    
 </web-app>
