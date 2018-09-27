@@ -1,17 +1,7 @@
 var app = angular.module('loginApp', []);
 
-app.controller('loginController', function($scope, $window, $http) {
+app.controller('loginController', function($scope, $window) {
 	$scope.logar = function() {
-		var url =  "LoginFilter";
-
-		var dados = {
-			login : $scope.login,
-			senha : $scope.senha
-		};
-
-		$http.post(url, dados).then(function(response) {
-			$scope.message = response.data;
-		});
-
+		$window.location.href = 'home.jsp';
 	}
 });
