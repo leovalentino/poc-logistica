@@ -17,12 +17,15 @@ public class DevolucaoDao extends PocCrudDao<Devolucao, Integer> {
 		super(Devolucao.class);
 	}
 	
-	public List<Devolucao> pesquisarListaDevolucao(Integer numPedido, Date dataPedido,
-			                                       BigDecimal valorPedido) {
+	public List<Devolucao> pesquisarListaDevolucao(Integer numPedido, Date dataPedidoMin,
+			                                       Date dataPedidoMax, BigDecimal valorPedidoMin, BigDecimal valorPedidoMax) {
 		TypedQuery<Devolucao> query = em.createQuery(FabricaQuery.criarQueryPesquisarDevolucao(), Devolucao.class);
 		query.setParameter("numPedido", numPedido);
-		query.setParameter("valorPedido", valorPedido);
-		query.setParameter("dataPedido", dataPedido);
+		query.setParameter("dataPedidoMin", dataPedidoMin);
+		query.setParameter("dataPedidoMax", dataPedidoMax);
+		query.setParameter("dataPedidoMax", dataPedidoMax);
+		query.setParameter("valorPedidoMin", valorPedidoMin);
+		query.setParameter("valorPedidoMax", valorPedidoMax);
 		
 		return query.getResultList();
 	}

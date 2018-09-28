@@ -25,9 +25,10 @@ public class DevolucaoServicoEJB implements DevolucaoServico {
 	@EJB
 	private PedidoDao pedidoDao;
 	
-	public List<DevolucaoVO> pesquisarDevolucao(Integer numPedido, Date dataDevolucao,
-            BigDecimal valorPedido) {
-		 List<Devolucao> listaDevolucao = dao.pesquisarListaDevolucao(numPedido, dataDevolucao, valorPedido);
+	@Override
+	public List<DevolucaoVO> pesquisarDevolucao(Integer numPedido, Date dataPedidoMin, Date dataPedidoMax,
+            BigDecimal valorPedidoMin, BigDecimal valorPedidoMax) {
+		 List<Devolucao> listaDevolucao = dao.pesquisarListaDevolucao(numPedido, dataPedidoMin, dataPedidoMax,valorPedidoMin, valorPedidoMax);
 		 return Conversor.convertListDevolucaoToListVo(listaDevolucao);
 	}
 

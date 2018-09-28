@@ -49,21 +49,40 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<form>
+
 							<div class="form-group col-md-4">
 								<label for="pedido">Pedido:</label> <input class="form-control"
 									type="text" name="numPedido" ng-model="numPedido"
 									ng-change="pesquisardevolucoes()" />
 							</div>
+
 							<div class="form-group col-md-4">
-								<label for="dataPedido">Data Pedido:</label> <input
-									class="form-control" type="date" name="dataPedido"
-									ng-model="dataPedido" ng-change="pesquisardevolucoes()" />
+								<label for="dataPedidoMin">Data Pedido Min:</label> <input
+									class="form-control" type="date" name="dataPedidoMin"
+									ng-model="dataPedidoMin" ng-change="pesquisardevolucoes()" />
 							</div>
+
 							<div class="form-group col-md-4">
-								<label for="dataPedido">Valor: </label> <input
-									class="form-control" type="text" name="valor" ng-model="valor"
+								<label for="dataPedido">Data Pedido Max: </label> <input
+									class="form-control" type="date" name="dataPedidoMax" ng-model="dataPedidoMax"
 									ng-change="pesquisardevolucoes()" />
 							</div>
+
+              <div class="form-group col-md-4">
+               
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="valorMin">Valor Min:</label> <input
+                  class="form-control" type="number" name="valorMin"
+                  ng-model="valorMin" ng-change="pesquisardevolucoes()" />
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="valorMax">Valor Max: </label> <input
+                  class="form-control" type="number" name="valorMax" ng-model="valorMax"
+                  ng-change="pesquisardevolucoes()" />
+              </div>
 
 							<div class="text-right">
 								<div class="form-group col-md-4">

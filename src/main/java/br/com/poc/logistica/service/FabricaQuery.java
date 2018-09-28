@@ -24,8 +24,14 @@ public class FabricaQuery {
 		StringBuilder jpql = new StringBuilder();
 		jpql.append("Select d from br.com.poc.logistica.model.Devolucao d ");
 		jpql.append("where (:numPedido is null or d.pedido.idPedido = :numPedido) ");
-		jpql.append("and (:valorPedido is null or d.pedido.valorPedido = :valorPedido) ");
-		jpql.append("and ( CAST(:dataPedido AS date) is null or d.pedido.dataPedido = :dataPedido) ");
+		jpql.append("and ( d.pedido.dataPedido between :dataPedidoMin and :dataPedidoMax) ");
+		jpql.append("or ( CAST(:dataPedidoMin as date) is null and  CAST(:dataPedidoMax AS date) is null) ");
+		jpql.append("or ( CAST(:dataPedidoMin as date) is null and :dataPedidoMax <= d.pedido.dataPedido) ");
+		jpql.append("or ( :dataPedidoMin >= d.pedido.dataPedido and CAST(:dataPedidoMax AS date) is null) ");
+		jpql.append("and ((:valorPedidoMin is null) and (:valorPedidoMax is null) ");
+		jpql.append("or (d.pedido.valorPedido >= :valorPedidoMin and d.pedido.valorPedido <= :valorPedidoMax)) ");
+		jpql.append("or (d.pedido.valorPedido >= :valorPedidoMin and :valorPedidoMax is null)) ");
+		jpql.append("or (:valorPedidoMin is null and d.pedido.valorPedido <= :valorPedidoMax)) ");
 		return jpql.toString();
 	}
 

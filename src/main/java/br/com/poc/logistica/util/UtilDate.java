@@ -2,7 +2,6 @@ package br.com.poc.logistica.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Logger;
 
@@ -14,9 +13,8 @@ public class UtilDate {
 	public static final String FORMATO_YYYY_MM_DD = "yyyy-MM-dd";
 	
 	public static String getDateString(Date dataDevolucao, String formato) {
-		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat(formato);
-		return sdf.format(cal.getTime());
+		return sdf.format(dataDevolucao);
 	}
 
 	public static Date getStringToDate(String dataDevolucao, String formato) {

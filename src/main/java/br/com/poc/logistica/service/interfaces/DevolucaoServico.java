@@ -13,8 +13,8 @@ import br.com.poc.logistica.model.PedidoVO;
 @Local
 public interface DevolucaoServico {
 
-	List<DevolucaoVO> pesquisarDevolucao(Integer numPedido, Date dataDevolucao,
-            BigDecimal valorPedido);
+	List<DevolucaoVO> pesquisarDevolucao(Integer numPedido, Date dataPedidoMin,
+            Date datePedidoMin, BigDecimal valorPedido, BigDecimal valorPedidoMax);
 	
 	void salvar(Devolucao tarifa);
 

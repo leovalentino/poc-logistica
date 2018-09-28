@@ -33,10 +33,13 @@ public class DevolucaoController {
 	@Path("/pesquisardevolucoes")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<DevolucaoVO> pesquisarDevolucao(@QueryParam("numPedido") Integer numPedido, 
-											    @QueryParam("dataPedido") String dataPedido,
-											    @QueryParam("valorPedido") BigDecimal valorPedido) {
-		Date datePedido = UtilDate.converterDataAngularParaJava(dataPedido);
-		return servico.pesquisarDevolucao(numPedido, datePedido, valorPedido);
+											    @QueryParam("dataPedidoMin") String dataPedidoMin,
+											    @QueryParam("dataPedidoMax") String dataPedidoMax,
+											    @QueryParam("valorPedidoMin") BigDecimal valorPedidoMin,
+											    @QueryParam("valorPedidoMax") BigDecimal valorPedidoMax) {
+		Date datePedidoMax = UtilDate.converterDataAngularParaJava(dataPedidoMax);
+		Date datePedidoMin = UtilDate.converterDataAngularParaJava(dataPedidoMin);
+		return servico.pesquisarDevolucao(numPedido, datePedidoMax,datePedidoMin, valorPedidoMin, valorPedidoMax);
     }
 	
 	@POST
