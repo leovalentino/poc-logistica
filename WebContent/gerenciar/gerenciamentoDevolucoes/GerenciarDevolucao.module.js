@@ -13,8 +13,8 @@ app.controller('cruddevolucao', function($scope, $http) {
 	 			'numPedido' : $scope.numPedido == '' ? null : $scope.numPedido,
 	 			'dataPedidoMin' : $scope.dataPedidoMin == '' ? null : $scope.dataPedidoMin,
 	 			'dataPedidoMax' : $scope.dataPedidoMax == '' ? null : $scope.dataPedidoMax,
-	 			'valorMin' : $scope.valorMin == '' ? null : $scope.valorMin,
-	 			'valorMax' : $scope.valorMax == '' ? null : $scope.valorMax
+	 			'valorPedidoMin' : $scope.valorPedidoMin == '' ? null : $scope.valorPedidoMin,
+	 			'valorPedidoMax' : $scope.valorPedidoMax == '' ? null : $scope.valorPedidoMax
  		    }
  		};
 

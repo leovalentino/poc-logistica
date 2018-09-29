@@ -10,7 +10,7 @@ public class FabricaQuery {
 		jpql.append("where (:descTarifa is null or t.descTarifa like :descTarifa) ");
 		jpql.append("and ((:valorMinTarifa is null) and (:valorMaxTarifa is null) ");
 		jpql.append("or (t.valorTarifa >= :valorMinTarifa and t.valorTarifa <= :valorMaxTarifa)) ");
-		jpql.append("or (t.valorTarifa >= :valorMinTarifa and :valorMaxTarifa is null)) ");
+		jpql.append("or (t.valorTarifa >= :valorMinTarifa and :valorMaxTarifa is null) ");
 		jpql.append("or (:valorMinTarifa is null and t.valorTarifa <= :valorMaxTarifa)) ");
 		jpql.append("order by t.idTarifa ");
 		return jpql.toString();
@@ -24,14 +24,14 @@ public class FabricaQuery {
 		StringBuilder jpql = new StringBuilder();
 		jpql.append("Select d from br.com.poc.logistica.model.Devolucao d ");
 		jpql.append("where (:numPedido is null or d.pedido.idPedido = :numPedido) ");
-		jpql.append("and ( d.pedido.dataPedido between :dataPedidoMin and :dataPedidoMax) ");
+		jpql.append("and (( d.pedido.dataPedido between :dataPedidoMin and :dataPedidoMax) ");
 		jpql.append("or ( CAST(:dataPedidoMin as date) is null and  CAST(:dataPedidoMax AS date) is null) ");
 		jpql.append("or ( CAST(:dataPedidoMin as date) is null and :dataPedidoMax <= d.pedido.dataPedido) ");
-		jpql.append("or ( :dataPedidoMin >= d.pedido.dataPedido and CAST(:dataPedidoMax AS date) is null) ");
+		jpql.append("or ( :dataPedidoMin >= d.pedido.dataPedido and CAST(:dataPedidoMax AS date) is null)) ");
 		jpql.append("and ((:valorPedidoMin is null) and (:valorPedidoMax is null) ");
-		jpql.append("or (d.pedido.valorPedido >= :valorPedidoMin and d.pedido.valorPedido <= :valorPedidoMax)) ");
-		jpql.append("or (d.pedido.valorPedido >= :valorPedidoMin and :valorPedidoMax is null)) ");
-		jpql.append("or (:valorPedidoMin is null and d.pedido.valorPedido <= :valorPedidoMax)) ");
+		jpql.append("or (d.pedido.produto.valorProduto >= :valorPedidoMin and d.pedido.produto.valorProduto <= :valorPedidoMax) ");
+		jpql.append("or (d.pedido.produto.valorProduto >= :valorPedidoMin and :valorPedidoMax is null) ");
+		jpql.append("or (:valorPedidoMin is null and d.pedido.produto.valorProduto <= :valorPedidoMax)) ");
 		return jpql.toString();
 	}
 

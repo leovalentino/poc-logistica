@@ -39,7 +39,20 @@ public class DevolucaoController {
 											    @QueryParam("valorPedidoMax") BigDecimal valorPedidoMax) {
 		Date datePedidoMax = UtilDate.converterDataAngularParaJava(dataPedidoMax);
 		Date datePedidoMin = UtilDate.converterDataAngularParaJava(dataPedidoMin);
-		return servico.pesquisarDevolucao(numPedido, datePedidoMax,datePedidoMin, valorPedidoMin, valorPedidoMax);
+		return servico.pesquisarDevolucao(numPedido, datePedidoMin, datePedidoMax, valorPedidoMin, valorPedidoMax);
+    }
+	
+	@GET
+	@Path("/pesquisardevolucoesexterna")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<DevolucaoVO> pesquisarDevolucaoExterna(@QueryParam("numPedido") Integer numPedido, 
+											    @QueryParam("dataPedidoMin") String dataPedidoMin,
+											    @QueryParam("dataPedidoMax") String dataPedidoMax,
+											    @QueryParam("valorPedidoMin") BigDecimal valorPedidoMin,
+											    @QueryParam("valorPedidoMax") BigDecimal valorPedidoMax) {
+		Date datePedidoMax = UtilDate.getStringToDate(dataPedidoMax, UtilDate.FORMATO_DD_MM_YYYY);
+		Date datePedidoMin = UtilDate.getStringToDate(dataPedidoMin, UtilDate.FORMATO_DD_MM_YYYY);
+		return servico.pesquisarDevolucao(numPedido, datePedidoMin, datePedidoMax, valorPedidoMin, valorPedidoMax);
     }
 	
 	@POST

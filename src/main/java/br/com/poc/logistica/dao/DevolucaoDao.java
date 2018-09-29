@@ -23,7 +23,6 @@ public class DevolucaoDao extends PocCrudDao<Devolucao, Integer> {
 		query.setParameter("numPedido", numPedido);
 		query.setParameter("dataPedidoMin", dataPedidoMin);
 		query.setParameter("dataPedidoMax", dataPedidoMax);
-		query.setParameter("dataPedidoMax", dataPedidoMax);
 		query.setParameter("valorPedidoMin", valorPedidoMin);
 		query.setParameter("valorPedidoMax", valorPedidoMax);
 		
