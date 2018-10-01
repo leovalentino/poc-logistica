@@ -54,9 +54,9 @@ public abstract class PocCrudDao<T extends PocEntidade, I extends Serializable> 
 	
 	public void excluir(I i) {
 		try {
-			LOGGER.info("Excluindo item no banco de dados");
 			T entidade = em.find(entidadeAserPersistida, i);
 			T entidadeMerged = em.merge(entidade);
+			LOGGER.info("Excluindo item" + entidade.getClass().getSimpleName() + " com id " + entidade.getId() + " do banco de dados");
 			em.remove(entidadeMerged);
 			em.flush();
 			LOGGER.info("Item excluído com sucesso!");

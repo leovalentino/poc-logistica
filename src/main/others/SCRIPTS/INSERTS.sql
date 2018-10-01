@@ -7,13 +7,13 @@ INSERT INTO "public"."categoria" (codcategoria,desccategoria) VALUES (4,'GAMES')
 INSERT INTO "public"."categoria" (codcategoria,desccategoria) VALUES (5,'LIVROS');
 
 
-INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (1,'56756841268','GILBERTO DA SILVA MOURA');
-INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (2,'98531025467','MARIA DE FÁTIMA');
-INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (3,'56903248568','ALESSANDRA DE SÁ');
-INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (4,'95302456755','JOÃO VICTOR VASCONCELOS');
-INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (5,'56910035489','FERNANDO GONÇALVES DE LIMA');
-INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (6,'65320246972','ALEXANDRE TOMAZ FERNANDES');
-INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (7,'98564532185','ROBERTA MARTINS PEREIRA');
+INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (1,'56756841268','LOJAS AMERICANAS');
+INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (2,'98531025467','SUBMARINO');
+INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (3,'56903248568','CASAS BAHIA');
+INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (4,'95302456755','EXTRA');
+INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (5,'56910035489','PONTO FRIO');
+INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (6,'65320246972','CARREFOUR');
+INSERT INTO "public"."cliente" (idcliente,cpfcnpj,nomecliente) VALUES (7,'98564532185','SHOPTIME');
 
 
 INSERT INTO "public"."devolucao" (iddevolucao,datadevolucao,motivo,idpedido) VALUES (1,{ts '2018-01-02 00:00:00.0'},'3',2);
