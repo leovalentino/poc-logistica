@@ -7,6 +7,7 @@ import javax.ws.rs.core.Application;
 
 import br.com.poc.logistica.controller.DevolucaoController;
 import br.com.poc.logistica.controller.EntregaController;
+import br.com.poc.logistica.controller.SolicitacaoEntregaController;
 import br.com.poc.logistica.controller.TarifaController;
 import br.com.poc.logistica.controller.UsuarioController;
 
@@ -20,6 +21,7 @@ public class PocApplication extends Application {
 		classes.add(DevolucaoController.class);
 		classes.add(EntregaController.class);
 		classes.add(UsuarioController.class);
+		classes.add(SolicitacaoEntregaController.class);
 	}
 
 	@Override

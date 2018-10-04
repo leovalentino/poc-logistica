@@ -3,6 +3,7 @@ package br.com.poc.logistica.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,11 @@ public class Pedido extends PocEntidade<Integer> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idPedido;
+	
+	@Column(nullable = false)
 	private Date dataPedido;
+	
+	@Column(nullable = false)
 	private BigDecimal valorPedido;
 
 	@ManyToOne
