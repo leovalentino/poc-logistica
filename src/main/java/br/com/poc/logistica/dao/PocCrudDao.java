@@ -59,7 +59,7 @@ public abstract class PocCrudDao<T extends PocEntidade, I extends Serializable> 
 			LOGGER.info("Excluindo item " + entidade.getClass().getSimpleName() + " com id " + entidade.getId() + " do banco de dados");
 			em.remove(entidadeMerged);
 			em.flush();
-			LOGGER.info("Item excluído com sucesso!");
+			LOGGER.info("Item " + entidade.getClass().getSimpleName() + " com id " + entidade.getId() +  " excluído com sucesso!");
 		} catch (PersistenceException e) {
 			LOGGER.error("Ocorreu um erro durante a persistência do item no banco de dados");
 		}

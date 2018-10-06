@@ -30,9 +30,8 @@
 						<li><a href="../../gerenciar/gerenciamentoDevolucoes/GerenciarDevolucao.template.html">GERENCIAR
 								DEVOLUÇÃO</a></li>
 						<li><a href="../../gerenciar/gerenciamentoEntregas/GerenciarEntregas.template.html">GERENCIAR
-								ENTREGAS</a></li>
-						<li><a href="GerenciarFrete.template.html">GERENCIAR
-								FRETE</a></li>
+								ENTREGA</a></li>
+						<li><a href="GerenciarFrete.template.html">GERENCIAR TARIFA</a></li>
 					</ul></li>
 					<li class="active"><a href="../../login.html">SAIR</a></li>
 			</ul>
@@ -56,16 +55,22 @@
 									placeholder="Descrição Tarifa" ng-change="pesquisartarifas()" />
 							</div>
 							<div class="form-group col-md-6">
-								<label for="valorTarifa">Valor Tarifa:</label> <input
-									class="form-control" type="number" ng-model="valorMinTarifa"
+								<label for="valorTarifa">Valor Tarifa:</label> 
+								<div class="input-group">
+								  <span class="input-group-addon">R$</span>
+								  <input class="form-control" type="number" ng-model="valorMinTarifa"
 									placeholder="Valor Min" ng-change="pesquisartarifas()" />
+								</div>
 							</div>
 							<div class="form-group col-md-6">
 								
 							</div>
 							<div class="form-group col-md-6">
-								<input class="form-control" type="number" ng-model="valorMaxTarifa"
+								<div class="input-group">
+								  <span class="input-group-addon">R$</span>
+								  <input class="form-control" type="number" ng-model="valorMaxTarifa"
 									   placeholder="Valor Max" ng-change="pesquisartarifas()" />
+							    </div>
 							</div>
 							<div class="form-group">
 								<div class="form-group col-md-6">
@@ -134,10 +139,23 @@
 							</div>
 
 							<div class="modal-body">
-								Descrição Tarifa:<input class="form-control" type="text"
-									ng-model="descTarifaModal" placeholder="Descrição Tarifa" /> <br>
-								Valor Tarifa:<input class="form-control" type="number"
-									ng-model="valorTarifaModal" placeholder="Valor Tarifa" />
+								<div class="form-row">
+									<div class="form-group">
+										<label for="numPedido">Descrição Tarifa:</label>
+										<input class="form-control" type="text"
+									ng-model="descTarifaModal" placeholder="Descrição Tarifa" />
+									</div>
+								</div>
+								
+								<div class="form-row">
+									<div class="form-group">
+										<label for="numPedido">Valor Tarifa:</label>
+										<div class="input-group">
+											<span class="input-group-addon">R$</span>
+											<input class="form-control" type="number"  ng-model="valorTarifaModal" placeholder="Valor Tarifa" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency"/>
+										</div>
+									</div>
+								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
@@ -174,14 +192,20 @@
 
 							    <div class="form-group">
 							    	<label for="valorCarga">Valor da Carga:</label>
-							    	<input class="form-control" type="number" ng-change="simularTarifa(tarifa)"
-									ng-model="valorCarga" placeholder="Valor da Carga" />
+									    <div class="input-group">
+									    	<span class="input-group-addon">R$</span>
+									    	<input class="form-control" type="number" ng-change="simularTarifa(tarifa)"
+											ng-model="valorCarga" placeholder="Valor da Carga" />
+										</div>
 							    </div>
 
 							    <div class="form-group">
 							    	<label for="valorCarga">Resultado:</label>
-							    	<input class="form-control" type="number"
-									ng-model="resultado" placeholder="Resultado" />
+							    	<div class="input-group">
+							    		<span class="input-group-addon">R$</span>
+								    	<input class="form-control" type="number" stepfactor="100"
+										ng-model="resultado" placeholder="Resultado" />
+									</div>
 							    </div>
 
 							</div>

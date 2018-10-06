@@ -65,5 +65,12 @@ public class FabricaQuery {
 		jpql.append("Select t from br.com.poc.logistica.model.Transportadora t ");
 		return jpql.toString();
 	}
+	
+	public static String criarQueryListarPorCnpj() {
+		StringBuilder jpql = new StringBuilder();
+		jpql.append("Select t from br.com.poc.logistica.model.Transportadora t ");
+		jpql.append("where cnpj = :cnpj");
+		return jpql.toString();
+	}
 
 }

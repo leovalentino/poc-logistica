@@ -20,10 +20,10 @@ public class Tarifa extends PocEntidade<Integer> {
 	@Column(name = "IDTARIFA")
 	private Integer idTarifa;
 
-	@Column(name = "DESCTARIFA")
+	@Column(name = "DESCTARIFA", nullable = false)
 	private String descTarifa;
 
-	@Column(name = "VALORTARIFA")
+	@Column(name = "VALORTARIFA", nullable = false)
 	private BigDecimal valorTarifa;
 
 	public Tarifa() {

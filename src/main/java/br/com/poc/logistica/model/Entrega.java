@@ -2,6 +2,7 @@ package br.com.poc.logistica.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +35,7 @@ public class Entrega extends PocEntidade<Integer> {
 	@JoinColumn(name = "idPedido")
 	private Pedido pedido;
 
+	@Column(nullable = false)
 	private Date dataEntregaPrevista;
 
 	public Integer getIdEntrega() {

@@ -2,6 +2,7 @@ package br.com.poc.logistica.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,8 @@ public class Devolucao extends PocEntidade<Integer> {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer idDevolucao;
+	
+	@Column(nullable = false)
 	private Date dataDevolucao;
 	
 	@ManyToOne

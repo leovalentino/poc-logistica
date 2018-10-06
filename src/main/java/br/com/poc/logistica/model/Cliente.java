@@ -1,5 +1,6 @@
 package br.com.poc.logistica.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,11 @@ public class Cliente extends PocEntidade<Integer> {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idCliente;
+	
+	@Column(nullable = false)
 	private String nomeCliente;
+	
+	@Column(nullable = false)
 	private String cpfCnpj;
 
 	public Integer getIdCliente() {

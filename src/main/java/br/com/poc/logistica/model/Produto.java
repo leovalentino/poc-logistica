@@ -2,6 +2,7 @@ package br.com.poc.logistica.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,8 @@ public class Produto extends PocEntidade<Integer> {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idProduto;
 	private String descProduto;
+	
+	@Column(nullable = false)
 	private BigDecimal valorProduto;
 	
 	@ManyToOne

@@ -1,5 +1,6 @@
 package br.com.poc.logistica.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,6 +13,8 @@ public class SituacaoEntrega extends PocEntidade<Short> {
 	
 	@Id
 	private Short codSituacaoEntrega;
+	
+	@Column(nullable = false)
 	private String descSituacaoEntrega;
 
 	public Short getCodSituacaoEntrega() {

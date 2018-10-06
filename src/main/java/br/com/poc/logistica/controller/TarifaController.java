@@ -1,7 +1,6 @@
 package br.com.poc.logistica.controller;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.validation.Valid;
@@ -14,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import br.com.poc.logistica.model.Tarifa;
 import br.com.poc.logistica.service.interfaces.TarifaServico;
@@ -27,38 +27,62 @@ public class TarifaController {
 	@GET
 	@Path("/pesquisartarifas")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Tarifa> pesquisarTarifa(@QueryParam("descTarifa") String descTarifa,
+	public Response pesquisarTarifa(@QueryParam("descTarifa") String descTarifa,
 										@QueryParam("valorMinTarifa") BigDecimal valorMinTarifa,
 										@QueryParam("valorMaxTarifa") BigDecimal valorMaxTarifa) {
-		return servico.pesquisarTarifa(descTarifa, valorMinTarifa, valorMaxTarifa);
+		try {
+			return Response.ok(servico.pesquisarTarifa(descTarifa, valorMinTarifa, valorMaxTarifa)).build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
     }
 	
 	@GET
 	@Path("/listartarifa")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Tarifa> listarTarifas() {
-		return servico.listarTarifas();
+	public Response listarTarifas() {
+		try {
+			return Response.ok(servico.listarTarifas()).build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
 	}
 	
 	@POST
 	@Path("/incluirtarifa")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void salvar(@Valid Tarifa tarifa) {
-		servico.salvar(tarifa);
+	public Response salvar(@Valid Tarifa tarifa) {
+		try {
+			servico.salvar(tarifa);
+			return Response.ok().build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
+		
 	}
 	
 	@PUT
 	@Path("/alterartarifa")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void alterar(@Valid Tarifa tarifa) {		
-		servico.alterar(tarifa);
+	public Response alterar(@Valid Tarifa tarifa) {
+		try {
+			servico.alterar(tarifa);
+			return Response.ok().build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
 	}
 	
 	@DELETE
 	@Path("/excluirtarifa")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void excluir(@QueryParam("idTarifa") Integer idTarifa) {
-		servico.excluir(idTarifa);
+	public Response excluir(@QueryParam("idTarifa") Integer idTarifa) {
+		try {
+			servico.excluir(idTarifa);
+			return Response.ok().build();
+		} catch (Exception e) {
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+		}
 	}
 	
 	

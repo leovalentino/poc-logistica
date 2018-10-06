@@ -84,7 +84,7 @@ app.controller('crudtarifa', function($scope, $http) {
 
 		if(confirm("Deseja realmente excluir item?")) {
 			$http.delete(url, dados).then(function(response) {
-				$scope.mensagemSucesso = "Item exluído com sucesso.";
+				$scope.mensagemSucesso = "Item excluído com sucesso.";
 				$scope.sucesso = true;
 				$scope.pesquisartarifas();
 			});
@@ -130,7 +130,11 @@ app.controller('crudtarifa', function($scope, $http) {
 	$scope.sort = function(keyname){
         $scope.sortKey = keyname;   
         $scope.reverse = !$scope.reverse; 
-    }
+    };
+
+     $scope.switchBool = function(value) {
+	   $scope[value] = !$scope[value];
+	};
 
 });
 

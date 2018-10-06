@@ -7,8 +7,6 @@ import javax.ejb.Local;
 @Local
 public interface SolicitacaoEntregaServico {
 
-	void salvarSolicitacaoDeEntrega(Date dataSolicitacao, String nomeTransportadora, String cnpjTranportadora);
-
-	
+	void salvarSolicitacaoDeEntrega(Date dataSolicitacao, String cnpjTranportadora);
 	
 }
